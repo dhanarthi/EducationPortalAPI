@@ -26,41 +26,36 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@FirstName", registrationForm.FirstName));
             sqlParameters.Add(new KeyValuePair<string, string>("@LastName", Convert.ToString(registrationForm.LastName)));
             sqlParameters.Add(new KeyValuePair<string, string>("@DateofBirth",Convert.ToString(registrationForm.DateofBirth)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@DateofJoining", Convert.ToString(registrationForm.DateofJoining)));
             sqlParameters.Add(new KeyValuePair<string, string>("@Gender", Convert.ToString(registrationForm.Gender)));
             sqlParameters.Add(new KeyValuePair<string, string>("@Nationality", registrationForm.Nationality));
-            sqlParameters.Add(new KeyValuePair<string, string>("@Class", Convert.ToString(registrationForm.slno)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@Class", Convert.ToString(registrationForm.Class)));
             sqlParameters.Add(new KeyValuePair<string, string>("@Section", registrationForm.Section));
-            sqlParameters.Add(new KeyValuePair<string, string>("@slno1", Convert.ToString(registrationForm.slno)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@StudentPhotoFileName", registrationForm.ID));
+            sqlParameters.Add(new KeyValuePair<string, string>("@StudentPhotoFileName", registrationForm.StudentPhotoFileName));
             sqlParameters.Add(new KeyValuePair<string, string>("@Caste", Convert.ToString(registrationForm.Caste)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@ID", registrationForm.ID));
-            sqlParameters.Add(new KeyValuePair<string, string>("@slno1", Convert.ToString(registrationForm.slno)));
             sqlParameters.Add(new KeyValuePair<string, string>("@Addressinfo", registrationForm.Addressinfo));
             sqlParameters.Add(new KeyValuePair<string, string>("@PermanentAddress", Convert.ToString(registrationForm.PermanentAddress)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@SchoolId", registrationForm.ID));
-            sqlParameters.Add(new KeyValuePair<string, string>("@slno1", Convert.ToString(registrationForm.slno)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@PhoneNumber", registrationForm.ID));
-            sqlParameters.Add(new KeyValuePair<string, string>("@EmailId", registrationForm.ID));
-            sqlParameters.Add(new KeyValuePair<string, string>("@slno1", Convert.ToString(registrationForm.slno)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@FatherName", Convert.ToString(registrationForm.FatherName)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@SchoolId", Convert.ToString(registrationForm.SchoolId)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@PhoneNumber", registrationForm.PhoneNumber));
+            sqlParameters.Add(new KeyValuePair<string, string>("@EmailId", registrationForm.EmailId));
+             sqlParameters.Add(new KeyValuePair<string, string>("@FatherName", Convert.ToString(registrationForm.FatherName)));
 
             sqlParameters.Add(new KeyValuePair<string, string>("@FatherOccupation", Convert.ToString(registrationForm.FatherOccupation)));
             sqlParameters.Add(new KeyValuePair<string, string>("@FatherMobileNo", registrationForm.FatherMobileNo));
             sqlParameters.Add(new KeyValuePair<string, string>("@MotherName", Convert.ToString(registrationForm.MotherName)));
             sqlParameters.Add(new KeyValuePair<string, string>("@MotherOccupation", registrationForm.MotherOccupation));
             sqlParameters.Add(new KeyValuePair<string, string>("@MotherMobileNo", Convert.ToString(registrationForm.MotherMobileNo)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@StudentPhotoFileName", registrationForm.ID));
+            sqlParameters.Add(new KeyValuePair<string, string>("@StudentPhotoFileName", registrationForm.StudentPhotoFileName));
             sqlParameters.Add(new KeyValuePair<string, string>("@Caste", Convert.ToString(registrationForm.Caste)));
             sqlParameters.Add(new KeyValuePair<string, string>("@Nameoflastschool", registrationForm.Nameoflastschool));
             sqlParameters.Add(new KeyValuePair<string, string>("@LastchoolTelephone", Convert.ToString(registrationForm.LastchoolTelephone)));
             sqlParameters.Add(new KeyValuePair<string, string>("@DistrictId", Convert.ToString(registrationForm.DistrictId)));
             sqlParameters.Add(new KeyValuePair<string, string>("@Postalcode", Convert.ToString(registrationForm.Postalcode)));
             sqlParameters.Add(new KeyValuePair<string, string>("@EmailId_parent", registrationForm.EmailId_parent));
-            sqlParameters.Add(new KeyValuePair<string, string>("@slno1", Convert.ToString(registrationForm.slno)));
             sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianName", registrationForm.GaurdianName));
-            sqlParameters.Add(new KeyValuePair<string, string>("@EmailId", registrationForm.ID));
-            sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianOccupation", Convert.ToString(registrationForm.slno)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@FatherName", Convert.ToString(registrationForm.slno)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@EmailId", registrationForm.EmailId));
+            sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianOccupation", Convert.ToString(registrationForm.GaurdianOccupation)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@FatherName", Convert.ToString(registrationForm.FatherName)));
 
 
             sqlParameters.Add(new KeyValuePair<string, string>("@FatherPhotoFileName", Convert.ToString(registrationForm.FatherPhotoFileName)));
@@ -68,8 +63,10 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianPhotoFileName", Convert.ToString(registrationForm.GaurdianPhotoFileName)));
             sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianName", registrationForm.GaurdianName));
             sqlParameters.Add(new KeyValuePair<string, string>("@RoleId", Convert.ToString(registrationForm.RoleId)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianOccupation", Convert.ToString(registrationForm.slno)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@FatherName", Convert.ToString(registrationForm.RoleId)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianOccupation", Convert.ToString(registrationForm.GaurdianOccupation)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@FatherName", Convert.ToString(registrationForm.FatherName)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@City", Convert.ToString(registrationForm.City)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@State", Convert.ToString(registrationForm.State)));
 
             var resut = manageSQLConnection.InsertData("InsertRegistrationGetRegistration", sqlParameters, "slno");
              return resut;
@@ -134,5 +131,7 @@ namespace EducationPortalAPI.Controllers.Forms
         public string GaurdianPhotoFileName { get; set; }
         public int RoleId { get; set; }
         public string UserId { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
     }
 }
