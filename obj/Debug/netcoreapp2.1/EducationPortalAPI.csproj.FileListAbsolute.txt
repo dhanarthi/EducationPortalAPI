@@ -1,0 +1,17 @@
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\bin\Debug\netcoreapp2.1\appsettings.Development.json
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\bin\Debug\netcoreapp2.1\appsettings.json
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\bin\Debug\netcoreapp2.1\EducationPortalAPI.deps.json
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\bin\Debug\netcoreapp2.1\EducationPortalAPI.runtimeconfig.json
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\bin\Debug\netcoreapp2.1\EducationPortalAPI.runtimeconfig.dev.json
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\bin\Debug\netcoreapp2.1\EducationPortalAPI.dll
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\bin\Debug\netcoreapp2.1\EducationPortalAPI.pdb
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\obj\Debug\netcoreapp2.1\EducationPortalAPI.csprojAssemblyReference.cache
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\obj\Debug\netcoreapp2.1\EducationPortalAPI.AssemblyInfoInputs.cache
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\obj\Debug\netcoreapp2.1\EducationPortalAPI.AssemblyInfo.cs
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\obj\Debug\netcoreapp2.1\EducationPortalAPI.csproj.CoreCompileInputs.cache
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\obj\Debug\netcoreapp2.1\EducationPortalAPI.RazorAssemblyInfo.cache
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\obj\Debug\netcoreapp2.1\EducationPortalAPI.RazorAssemblyInfo.cs
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\obj\Debug\netcoreapp2.1\EducationPortalAPI.RazorTargetAssemblyInfo.cache
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\obj\Debug\netcoreapp2.1\EducationPortalAPI.dll
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\obj\Debug\netcoreapp2.1\EducationPortalAPI.pdb
+D:\TestandVerification\Projects\EducationPortal\EducationPortal\WebAPI\EducationPortalAPI\obj\Debug\netcoreapp2.1\EducationPortalAPI.genruntimeconfig.cache
