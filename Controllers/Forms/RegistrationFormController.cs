@@ -63,8 +63,6 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianPhotoFileName", Convert.ToString(registrationForm.GaurdianPhotoFileName)));
             sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianName", registrationForm.GaurdianName));
             sqlParameters.Add(new KeyValuePair<string, string>("@RoleId", Convert.ToString(registrationForm.RoleId)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianOccupation", Convert.ToString(registrationForm.GaurdianOccupation)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@FatherName", Convert.ToString(registrationForm.FatherName)));
             sqlParameters.Add(new KeyValuePair<string, string>("@City", Convert.ToString(registrationForm.City)));
             sqlParameters.Add(new KeyValuePair<string, string>("@State", Convert.ToString(registrationForm.State)));
 
