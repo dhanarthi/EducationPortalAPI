@@ -1,32 +1,32 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EducationPortalAPI.ManageSQL;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using System.Data;
-using EducationPortalAPI.ManageSQL;
 
 namespace EducationPortalAPI.Controllers.Forms
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CircularController : ControllerBase
+    public class BooksController : ControllerBase
     {
         [HttpPost("{id}")]
-        public string Post(CircularEntity entity)
+        public string Post(BooksEntity entity)
         {
             ManageSQLConnection manageSQL = new ManageSQLConnection();
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
             sqlParameters.Add(new KeyValuePair<string, string>("@RowId", Convert.ToString(entity.RowId)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", entity.SchoolID));
-            sqlParameters.Add(new KeyValuePair<string, string>("@CircularDate", Convert.ToString(entity.CircularDate)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@Subject", entity.Subject));
-            sqlParameters.Add(new KeyValuePair<string, string>("@Details", entity.Details));
-            sqlParameters.Add(new KeyValuePair<string, string>("@Download", entity.Download));
+            sqlParameters.Add(new KeyValuePair<string, string>("@SchoolId", entity.SchoolId));
+            sqlParameters.Add(new KeyValuePair<string, string>("@Pdffilename", Convert.ToString(entity.Pdffilename)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@authorReference", entity.authorReference));
+            sqlParameters.Add(new KeyValuePair<string, string>("@subjects", entity.subjects));
+            sqlParameters.Add(new KeyValuePair<string, string>("@ClassId", Convert.ToString(entity.ClassId)));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
-            var result = manageSQL.InsertData("InsertCirculars", sqlParameters);
+            var result = manageSQL.InsertData("InsertBooks", sqlParameters);
             return JsonConvert.SerializeObject(result);
         }
         [HttpGet("{id}")]
@@ -36,20 +36,18 @@ namespace EducationPortalAPI.Controllers.Forms
             DataSet ds = new DataSet();
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", SchoolID));
-            ds = manageSQL.GetDataSetValues("GetCirculars", sqlParameters);
+            ds = manageSQL.GetDataSetValues("GetBooks", sqlParameters);
             return JsonConvert.SerializeObject(ds.Tables[0]);
         }
     }
-
-
-    public class CircularEntity
+    public class BooksEntity
     {
         public Int64 RowId { get; set; }
-        public string SchoolID { get; set; }
-        public DateTime CircularDate { get; set; }
-        public string Subject { get; set; }
-        public string Details { get; set; }
-        public string Download { get; set; }
+        public string SchoolId { get; set; }
+        public int ClassId { get; set; }
+        public string subjects { get; set; }
+        public string authorReference { get; set; }
+        public string Pdffilename { get; set; }
         public bool Flag { get; set; }
     }
 }
