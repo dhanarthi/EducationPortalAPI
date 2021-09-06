@@ -184,7 +184,7 @@ namespace EducationPortalAPI.ManageSQL
                     sqlCommand.Parameters.AddWithValue(keyValuePair.Key, keyValuePair.Value);
                 }
              
-                sqlCommand.Parameters.Add(sFieldName, SqlDbType.BigInt, 13);
+                sqlCommand.Parameters.Add(sFieldName, SqlDbType.Int);
                 sqlCommand.Parameters[sFieldName].Direction = ParameterDirection.Output;
                 sqlCommand.ExecuteNonQuery();
 
