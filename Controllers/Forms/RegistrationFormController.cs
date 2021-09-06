@@ -82,14 +82,15 @@ namespace EducationPortalAPI.Controllers.Forms
         }
 
         [HttpGet("{id}")]
-        public string Get(string Type)
+        public string Get(string Type,string Id)
         {
             ManageSQLConnection manageSQLConnection = new ManageSQLConnection();
 
             //Check the document Approval
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
             sqlParameters.Add(new KeyValuePair<string, string>("@Type", Type));
-           var data= manageSQLConnection.GetDataSetValues("GetRegistration", sqlParameters);
+            sqlParameters.Add(new KeyValuePair<string, string>("@Type", Id));
+            var data = manageSQLConnection.GetDataSetValues("GetRegistration", sqlParameters);
             return JsonConvert.SerializeObject(data.Tables[0]);
         }
     }
