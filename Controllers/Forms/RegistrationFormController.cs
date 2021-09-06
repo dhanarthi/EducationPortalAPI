@@ -89,7 +89,7 @@ namespace EducationPortalAPI.Controllers.Forms
             //Check the document Approval
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
             sqlParameters.Add(new KeyValuePair<string, string>("@Type", Type));
-            sqlParameters.Add(new KeyValuePair<string, string>("@Type", Id));
+            sqlParameters.Add(new KeyValuePair<string, string>("@Id", Id));
             var data = manageSQLConnection.GetDataSetValues("GetRegistration", sqlParameters);
             return JsonConvert.SerializeObject(data.Tables[0]);
         }
