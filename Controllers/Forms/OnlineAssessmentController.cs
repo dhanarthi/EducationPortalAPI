@@ -36,23 +36,30 @@ namespace EducationPortalAPI.Controllers.Forms
     {
         public Int64 RowId { get; set; }
         public string SchoolId { get; set; }
+        public string Classcode { get; set; }
         public string TestName { get; set; }
         public string TestDescription { get; set; }
         public DateTime AssessmentDate { get; set; }
+        public int QuestionType { get; set; }
+        public int TotalMarks { get; set; }
+        public int TotalDuration { get; set; }
+        public int DurationType { get; set; }
+        public int SubjectId { get; set; }
         public bool Flag { get; set; }
         public List<OnlineAssessmentQuestionsEntity> Questions { get; set; }
     }
     public class OnlineAssessmentQuestionsEntity
     {
-        public Int64 QuestionId { get; set; }
-        public Int64 RowId { get; set; }
-        public string QuestionDetails { get; set; }
-        public List<OnlineAssessmentOptions> Options { get;set;}
+        public Int64 questionId { get; set; }
+        public Int64 questionTypeId { get; set; }
+        public string questionName { get; set; }
+        public List<OnlineAssessmentOptions> options { get;set;}
     }
     public class OnlineAssessmentOptions
     {
-       public Int64  AnswerId { get; set; }
-       public Int64  QuestionId { get; set; }
-       public bool IsAnswer { get; set; }
+       public string optionName { get; set; }
+       public Int64 optionId { get; set; }
+       public Int64 questionId { get; set; }
+        public bool isAnswer { get; set; }
     }
 }

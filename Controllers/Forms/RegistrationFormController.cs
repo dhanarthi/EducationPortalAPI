@@ -30,9 +30,12 @@ namespace EducationPortalAPI.Controllers.Forms
                 sqlParameters.Add(new KeyValuePair<string, string>("@DateofBirth", Convert.ToString(registrationForm.DateofBirth)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@DateofJoining", Convert.ToString(registrationForm.DateofJoining)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Gender", Convert.ToString(registrationForm.Gender)));
+                sqlParameters.Add(new KeyValuePair<string, string>("@BloodGroup", registrationForm.BloodGroup));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Nationality", registrationForm.Nationality));
-                sqlParameters.Add(new KeyValuePair<string, string>("@Class", Convert.ToString(registrationForm.Class)));
+                sqlParameters.Add(new KeyValuePair<string, string>("@Class", registrationForm.Class));
+                sqlParameters.Add(new KeyValuePair<string, string>("@ClassId", Convert.ToString(registrationForm.ClassId)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Section", registrationForm.Section));
+                sqlParameters.Add(new KeyValuePair<string, string>("@SectionId", registrationForm.SectionId));
                 sqlParameters.Add(new KeyValuePair<string, string>("@StudentPhotoFileName", registrationForm.StudentPhotoFileName));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Caste", Convert.ToString(registrationForm.Caste)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Addressinfo", registrationForm.Addressinfo));
@@ -48,6 +51,7 @@ namespace EducationPortalAPI.Controllers.Forms
                 sqlParameters.Add(new KeyValuePair<string, string>("@City", Convert.ToString(registrationForm.City)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@State", Convert.ToString(registrationForm.State)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@UserId", "-"));
+                sqlParameters.Add(new KeyValuePair<string, string>("@Password", registrationForm.Password));
 
                 sqlParameters.Add(new KeyValuePair<string, string>("@FatherName", registrationForm.FatherName));
                 sqlParameters.Add(new KeyValuePair<string, string>("@FatherOccupation", registrationForm.FatherOccupation));
@@ -108,7 +112,9 @@ namespace EducationPortalAPI.Controllers.Forms
         public string Nationality { get; set; }
         public string BloodGroup { get; set; }
         public string Class { get; set; }
+        public string ClassId { get; set; }
         public string Section { get; set; }
+        public string SectionId { get; set; }
         public string StudentPhotoFileName { get; set; }
         public string Caste { get; set; }
         public string Addressinfo { get; set; }
@@ -142,5 +148,6 @@ namespace EducationPortalAPI.Controllers.Forms
         public string UserId { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        public string Password { get; set; }
     }
 }
