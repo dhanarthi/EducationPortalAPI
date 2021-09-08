@@ -32,7 +32,7 @@ namespace EducationPortalAPI.ManageSQL
                 sqlCommand.Connection = sqlConnection;
                 sqlCommand.CommandText = "InsertOnlineAssessmentMaster";
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.AddWithValue("@RowId1", 5);
+                sqlCommand.Parameters.AddWithValue("@RowId1", entity.RowId);
                 sqlCommand.Parameters.AddWithValue("@TestName", entity.TestName);
                 sqlCommand.Parameters.AddWithValue("@TestDescription", entity.TestDescription);
                 sqlCommand.Parameters.AddWithValue("@SchoolId", entity.SchoolId);

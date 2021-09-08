@@ -23,12 +23,16 @@ namespace EducationPortalAPI.Controllers.Forms
             return JsonConvert.SerializeObject(result);
         }
         [HttpGet("{id}")]
-        public string Get(string SchoolID)
+        public string Get(string SchoolID, string ClassID, string TestDate)
         {
             ManageSQLConnection manageSQL = new ManageSQLConnection();
             DataSet ds = new DataSet();
-           
-            return "";
+            List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
+            sqlParameters.Add(new KeyValuePair<string, string>("@TestDate", TestDate));
+            sqlParameters.Add(new KeyValuePair<string, string>("@SchoolId", SchoolID));
+            sqlParameters.Add(new KeyValuePair<string, string>("@Classcode", ClassID));
+            var data = manageSQL.GetDataSetValues("GetOnlineAssessmentQuestion", sqlParameters);
+            return JsonConvert.SerializeObject(data.Tables[0]);
         }
 
     }
