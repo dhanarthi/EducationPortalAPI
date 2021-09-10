@@ -35,14 +35,16 @@ namespace EducationPortalAPI.ManageSQL
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 foreach (var e in entity)
                 {
+                    sqlCommand.Parameters.Clear();
+                    sqlCommand.Dispose();
                     sqlCommand.Parameters.AddWithValue("@AnswerId", e.AnswerId);
                     sqlCommand.Parameters.AddWithValue("@OptionId", e.OptionId);
                     sqlCommand.Parameters.AddWithValue("@TestId", e.TestId);
                     sqlCommand.Parameters.AddWithValue("@QuestionId", e.QuestionId);
                     sqlCommand.Parameters.AddWithValue("@isAnswered", e.isAnswered);
                     sqlCommand.Parameters.AddWithValue("@isSelected", e.isSelected);
+                    sqlCommand.ExecuteNonQuery();
                 }
-                sqlCommand.ExecuteNonQuery();
                 sqlCommand.Parameters.Clear();
                 sqlCommand.Dispose();
                 objTrans.Commit();
