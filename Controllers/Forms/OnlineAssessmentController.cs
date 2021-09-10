@@ -14,14 +14,14 @@ namespace EducationPortalAPI.Controllers.Forms
     [ApiController]
     public class OnlineAssessmentController : ControllerBase
     {
-         
         [HttpPost("{id}")]
         public string Post(OnlineAssessmentMasterEntity entity)
         {
-            ManageOnlineAssessment onlineAssessment = new ManageOnlineAssessment();           
-            var result = onlineAssessment.InsertData(entity);
-            return JsonConvert.SerializeObject(result);
+                ManageOnlineAssessment onlineAssessment = new ManageOnlineAssessment();
+                var result = onlineAssessment.InsertData(entity);
+                return JsonConvert.SerializeObject(result);
         }
+
         [HttpGet("{id}")]
         public string Get(string SchoolID, string ClassID, string TestDate)
         {
@@ -38,6 +38,7 @@ namespace EducationPortalAPI.Controllers.Forms
     }
     public class OnlineAssessmentMasterEntity
     {
+        public int  type { get; set; }
         public Int64 RowId { get; set; }
         public string SchoolId { get; set; }
         public string Classcode { get; set; }
@@ -64,6 +65,15 @@ namespace EducationPortalAPI.Controllers.Forms
        public string optionName { get; set; }
        public Int64 optionId { get; set; }
        public Int64 questionId { get; set; }
-        public bool isAnswer { get; set; }
+       public bool isAnswer { get; set; }
+    }
+    public class OnlineAssessmentAnswers
+    {
+        public Int64 TestId { get; set; }
+        public Int64 AnswerId { get; set; }
+        public Int64 QuestionId { get; set; }
+        public Int64 OptionId { get; set; }
+        public bool isSelected { get; set; }
+        public bool isAnswered { get; set; }
     }
 }

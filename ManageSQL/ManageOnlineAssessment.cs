@@ -80,7 +80,7 @@ namespace EducationPortalAPI.ManageSQL
                         sqlCommand.Connection = sqlConnection;
                         sqlCommand.CommandText = "InsertOnlineAssessmentOptions";
                         sqlCommand.CommandType = CommandType.StoredProcedure;
-                        sqlCommand.Parameters.AddWithValue("@AnswerId", Option.optionId);
+                        sqlCommand.Parameters.AddWithValue("@OptionId", Option.optionId);
                         sqlCommand.Parameters.AddWithValue("@QuestionId", QuestionId);
                         sqlCommand.Parameters.AddWithValue("@OptionName", Option.optionName);
                         sqlCommand.Parameters.AddWithValue("@IsAnswer", Option.isAnswer);  
