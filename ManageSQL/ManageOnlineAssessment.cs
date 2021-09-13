@@ -36,13 +36,18 @@ namespace EducationPortalAPI.ManageSQL
                 sqlCommand.Parameters.AddWithValue("@TestName", entity.TestName);
                 sqlCommand.Parameters.AddWithValue("@TestDescription", entity.TestDescription);
                 sqlCommand.Parameters.AddWithValue("@SchoolId", entity.SchoolId);
-                sqlCommand.Parameters.AddWithValue("@RowId", entity.RowId);
+                sqlCommand.Parameters.AddWithValue("@Classcode", entity.Classcode);
+                sqlCommand.Parameters.AddWithValue("@totalmarks", entity.TotalMarks);
+                sqlCommand.Parameters.AddWithValue("@totalduration", entity.TotalDuration);
+                sqlCommand.Parameters.AddWithValue("@durationtype", entity.DurationType);
+                sqlCommand.Parameters.AddWithValue("@SubjectId", entity.SubjectId);
+                sqlCommand.Parameters.AddWithValue("@questiontype", entity.QuestionType);
                 sqlCommand.Parameters.AddWithValue("@Flag", entity.Flag);
                 sqlCommand.Parameters.AddWithValue("@AssessmentDate", entity.AssessmentDate);
                 sqlCommand.Parameters.Add("@RowId", SqlDbType.BigInt, 13);
                 sqlCommand.Parameters["@RowId"].Direction = ParameterDirection.Output;
                 sqlCommand.ExecuteNonQuery();
-                int AssessmentRowid = (int)sqlCommand.Parameters["@RowId"].Value;
+                int AssessmentRowid = (int)(long)sqlCommand.Parameters["@RowId"].Value;
 
                 sqlCommand.Parameters.Clear();
                 sqlCommand.Dispose();
@@ -58,14 +63,14 @@ namespace EducationPortalAPI.ManageSQL
                     sqlCommand.CommandText = "InsertOnlineAssessmentQuestions";
                     sqlCommand.CommandType = CommandType.StoredProcedure;
                     sqlCommand.Parameters.AddWithValue("@RowId", AssessmentRowid);
-                    sqlCommand.Parameters.AddWithValue("@QuestionId", item.QuestionId);
-                    sqlCommand.Parameters.AddWithValue("@QuestionDetails", item.QuestionDetails);
+                    sqlCommand.Parameters.AddWithValue("@QuestionId1", item.questionId);
+                    sqlCommand.Parameters.AddWithValue("@QuestionDetails", item.questionName);
                     sqlCommand.Parameters.Add("@QuestionId", SqlDbType.BigInt, 13);
                     sqlCommand.Parameters["@QuestionId"].Direction = ParameterDirection.Output;
                     sqlCommand.ExecuteNonQuery();
-                    int QuestionId= (int)sqlCommand.Parameters["@QuestionId"].Value;
+                    int QuestionId= (int)(long)sqlCommand.Parameters["@QuestionId"].Value;
 
-                    foreach (var Option in item.Options)
+                    foreach (var Option in item.options)
                     {
                         sqlCommand.Parameters.Clear();
                         sqlCommand.Dispose();
@@ -75,9 +80,10 @@ namespace EducationPortalAPI.ManageSQL
                         sqlCommand.Connection = sqlConnection;
                         sqlCommand.CommandText = "InsertOnlineAssessmentOptions";
                         sqlCommand.CommandType = CommandType.StoredProcedure;
-                        sqlCommand.Parameters.AddWithValue("@AnswerId", Option.AnswerId);
+                        sqlCommand.Parameters.AddWithValue("@OptionId", Option.optionId);
                         sqlCommand.Parameters.AddWithValue("@QuestionId", QuestionId);
-                        sqlCommand.Parameters.AddWithValue("@IsAnswer", Option.IsAnswer);  
+                        sqlCommand.Parameters.AddWithValue("@OptionName", Option.optionName);
+                        sqlCommand.Parameters.AddWithValue("@IsAnswer", Option.isAnswer);  
                         sqlCommand.ExecuteNonQuery();
                     }
                 }
