@@ -24,7 +24,9 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@Class", Convert.ToString(entity.Class)));
             sqlParameters.Add(new KeyValuePair<string, string>("@AssignmentDate", Convert.ToString(entity.AssignmentDate)));
             sqlParameters.Add(new KeyValuePair<string, string>("@AssignmentDueDate", Convert.ToString(entity.AssignmentDueDate)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@AssignmentWork", entity.AssignmentWork));
             sqlParameters.Add(new KeyValuePair<string, string>("@AssignmentType", entity.AssignmentType));
+            sqlParameters.Add(new KeyValuePair<string, string>("@Subjectname", entity.Subjectname));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
             var result = manageSQL.InsertData("InsertAssignments", sqlParameters);
             return JsonConvert.SerializeObject(result);
@@ -37,7 +39,7 @@ namespace EducationPortalAPI.Controllers.Forms
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", SchoolID));
             sqlParameters.Add(new KeyValuePair<string, string>("@Class", Class));
-            ds = manageSQL.GetDataSetValues("InsertAssignments", sqlParameters);
+            ds = manageSQL.GetDataSetValues("GetAssignments", sqlParameters);
             return JsonConvert.SerializeObject(ds.Tables[0]);
         }
     }
