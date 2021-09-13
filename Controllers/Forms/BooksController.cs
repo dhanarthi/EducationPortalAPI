@@ -26,6 +26,7 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@subjects", entity.subjects));
             sqlParameters.Add(new KeyValuePair<string, string>("@ClassId", Convert.ToString(entity.ClassId)));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@Years",  entity.Years));
             var result = manageSQL.InsertData("InsertBooks", sqlParameters);
             return JsonConvert.SerializeObject(result);
         }
@@ -49,5 +50,7 @@ namespace EducationPortalAPI.Controllers.Forms
         public string authorReference { get; set; }
         public string Pdffilename { get; set; }
         public bool Flag { get; set; }
+        
+        public string Years { get; set; }
     }
 }
