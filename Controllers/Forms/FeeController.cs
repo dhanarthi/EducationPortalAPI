@@ -23,7 +23,7 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@Academic", Convert.ToString(entity.Academic)));
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolId", entity.SchoolId));
             sqlParameters.Add(new KeyValuePair<string, string>("@StudentId", entity.StudentId));
-            sqlParameters.Add(new KeyValuePair<string, string>("@duedate", Convert.ToString(entity.duedate)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@duedate", entity.duedate));
             sqlParameters.Add(new KeyValuePair<string, string>("@ActualAmount", entity.ActualAmount));
             sqlParameters.Add(new KeyValuePair<string, string>("@PaidAmount", entity.PaidAmount));
             sqlParameters.Add(new KeyValuePair<string, string>("@OutstandingAmount", entity.OutstandingAmount));
