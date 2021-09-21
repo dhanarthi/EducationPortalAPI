@@ -23,7 +23,7 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", entity.SchoolID));
             sqlParameters.Add(new KeyValuePair<string, string>("@EventDetailS", Convert.ToString(entity.EventDetailS)));
             sqlParameters.Add(new KeyValuePair<string, string>("@Holiday", entity.Holiday));
-            sqlParameters.Add(new KeyValuePair<string, string>("@eventdate", Convert.ToString(entity.eventdate)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@eventdate", entity.eventdate));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
             var result = manageSQL.InsertData("InsertEventDetails", sqlParameters);
             return JsonConvert.SerializeObject(result);
@@ -43,7 +43,7 @@ namespace EducationPortalAPI.Controllers.Forms
     {
         public Int64 RowId { get; set; }
         public string SchoolID { get; set; }
-        public DateTime eventdate { get; set; }
+        public string eventdate { get; set; }
         public string EventDetailS { get; set; }
         public string Holiday { get; set; }
         public string Flag { get; set; }

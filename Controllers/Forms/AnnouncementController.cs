@@ -21,7 +21,7 @@ namespace EducationPortalAPI.Controllers.Forms
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
             sqlParameters.Add(new KeyValuePair<string, string>("@RowId", Convert.ToString(entity.RowId)));
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", entity.SchoolID));
-            sqlParameters.Add(new KeyValuePair<string, string>("@Announcementdate", Convert.ToString(entity.Announcementdate)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@Announcementdate", entity.Announcementdate));
             sqlParameters.Add(new KeyValuePair<string, string>("@AnnouncementTag", entity.AnnouncementTag));
             sqlParameters.Add(new KeyValuePair<string, string>("@Announcement", entity.Announcement));
             sqlParameters.Add(new KeyValuePair<string, string>("@Announcementfilename", entity.Announcementfilename));
@@ -44,7 +44,7 @@ namespace EducationPortalAPI.Controllers.Forms
     {
         public Int64 RowId { get; set; }
         public string SchoolID { get; set; }
-        public DateTime Announcementdate { get; set; }
+        public string Announcementdate { get; set; }
         public string AnnouncementTag { get; set; }
         public string Announcement { get; set; }
         public string Announcementfilename { get; set; }

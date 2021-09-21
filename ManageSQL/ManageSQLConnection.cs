@@ -145,7 +145,7 @@ namespace EducationPortalAPI.ManageSQL
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                AuditLog.WriteError(ex.Message);
                 return false;
             }
             finally
@@ -194,7 +194,7 @@ namespace EducationPortalAPI.ManageSQL
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                AuditLog.WriteError(ex.Message);
                 return null;
             }
             finally
