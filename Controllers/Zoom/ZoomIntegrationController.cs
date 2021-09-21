@@ -67,9 +67,9 @@ namespace EducationPortalAPI.Controllers.Zoom
                     meetting.Topics = (string)MyjObject["topic"]; ;
                     meetting.Duration = (int)MyjObject["duration"]; ;
                     meetting.MeetingDate = (DateTime)MyjObject["start_time"]; ;
-                    meetting.ClassId = 1;
-                    meetting.SchoolId = "1";
-                    meetting.SectionCode = 1;
+                    meetting.ClassId = entity.ClassId;
+                    meetting.SchoolId = entity.SchoolId;
+                    meetting.SectionCode = entity.SectionCode;
                     meetting.RowId = 0;
                     meetting.Flag = true;
                     ManageZoomSql _manageSQL = new ManageZoomSql();
