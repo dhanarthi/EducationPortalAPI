@@ -62,7 +62,7 @@ namespace EducationPortalAPI.Controllers.Zoom
                 {
                     MeettingEntity meetting = new MeettingEntity();
                     meetting.MeetingId = (string)MyjObject["id"];
-                    meetting.MeetingURL = (string)MyjObject["start_url"]; ;
+                    meetting.MeetingURL = (string)MyjObject["JoinURL"]; ;
                     meetting.Passcode = (string)MyjObject["id"]; ;
                     meetting.Topics = (string)MyjObject["topic"]; ;
                     meetting.Duration = (int)MyjObject["duration"]; ;
@@ -72,6 +72,7 @@ namespace EducationPortalAPI.Controllers.Zoom
                     meetting.SectionCode = entity.SectionCode;
                     meetting.RowId = 0;
                     meetting.Flag = true;
+                    meetting.StartURL = startURL;
                     ManageZoomSql _manageSQL = new ManageZoomSql();
                     _manageSQL.InsertData(meetting);
 
@@ -111,5 +112,6 @@ namespace EducationPortalAPI.Controllers.Zoom
         public string Passcode { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool Flag { get; set; }
+        public string StartURL { get; set; }
     }
 }

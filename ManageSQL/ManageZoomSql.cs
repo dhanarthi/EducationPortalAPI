@@ -9,7 +9,6 @@ namespace EducationPortalAPI.ManageSQL
 {
     public class ManageZoomSql
     {
-
         public bool InsertData(MeettingEntity entity)
         {
             try
@@ -26,13 +25,14 @@ namespace EducationPortalAPI.ManageSQL
                 sqlParameters.Add(new KeyValuePair<string, string>("@ClassId", Convert.ToString(entity.ClassId)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@SchoolId", entity.SchoolId));
                 sqlParameters.Add(new KeyValuePair<string, string>("@SectionCode", Convert.ToString(entity.SectionCode)));
-                sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
-                var result = manageSQL.InsertData("InsertMySchool", sqlParameters);
+                sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag))); 
+                sqlParameters.Add(new KeyValuePair<string, string>("@StartURL", entity.StartURL)); 
+                 var result = manageSQL.InsertData("InsertMySchool", sqlParameters);
                 return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                AuditLog.WriteError(ex.Message);
                 return false;
             }
             finally
