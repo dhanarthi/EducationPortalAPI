@@ -24,11 +24,11 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolId", entity.SchoolId));
             sqlParameters.Add(new KeyValuePair<string, string>("@StudentId", entity.StudentId));
             sqlParameters.Add(new KeyValuePair<string, string>("@duedate", entity.duedate));
-            sqlParameters.Add(new KeyValuePair<string, string>("@ActualAmount", entity.ActualAmount));
-            sqlParameters.Add(new KeyValuePair<string, string>("@PaidAmount", entity.PaidAmount));
-            sqlParameters.Add(new KeyValuePair<string, string>("@OutstandingAmount", entity.OutstandingAmount));
-            sqlParameters.Add(new KeyValuePair<string, string>("@PayingAmount", entity.PayingAmount));
-            sqlParameters.Add(new KeyValuePair<string, string>("@FineAmount", entity.FineAmount));
+            sqlParameters.Add(new KeyValuePair<string, string>("@ActualAmount", Convert.ToString(entity.ActualAmount)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@PaidAmount", Convert.ToString(entity.PaidAmount)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@OutstandingAmount", Convert.ToString(entity.OutstandingAmount)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@PayingAmount", Convert.ToString(entity.PayingAmount)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@FineAmount", Convert.ToString(entity.FineAmount)));
             sqlParameters.Add(new KeyValuePair<string, string>("@ReceiptBook", entity.ReceiptBook));
             sqlParameters.Add(new KeyValuePair<string, string>("@FeeName", entity.FeeName));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
@@ -58,8 +58,8 @@ namespace EducationPortalAPI.Controllers.Forms
         public decimal OutstandingAmount { get; set; }
         public decimal PayingAmount { get; set; }
         public decimal FineAmount { get; set; }
-        public decimal ReceiptBook { get; set; }
-        public decimal FeeName { get; set; }
+        public string ReceiptBook { get; set; }
+        public string FeeName { get; set; }
         public bool Flag { get; set; }
     }
 }
