@@ -21,7 +21,7 @@ namespace EducationPortalAPI.Controllers.Forms
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
             sqlParameters.Add(new KeyValuePair<string, string>("@RowId", Convert.ToString(entity.RowId)));
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", entity.SchoolID));
-            sqlParameters.Add(new KeyValuePair<string, string>("@CircularDate", Convert.ToString(entity.CircularDate)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@CircularDate",  entity.CircularDate));
             sqlParameters.Add(new KeyValuePair<string, string>("@Subject", entity.Subject));
             sqlParameters.Add(new KeyValuePair<string, string>("@Details", entity.Details));
             sqlParameters.Add(new KeyValuePair<string, string>("@Download", entity.Download));
@@ -46,7 +46,7 @@ namespace EducationPortalAPI.Controllers.Forms
     {
         public Int64 RowId { get; set; }
         public string SchoolID { get; set; }
-        public DateTime CircularDate { get; set; }
+        public string CircularDate { get; set; }
         public string Subject { get; set; }
         public string Details { get; set; }
         public string Download { get; set; }

@@ -23,7 +23,7 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", entity.SchoolID));
             sqlParameters.Add(new KeyValuePair<string, string>("@Topic", Convert.ToString(entity.Topic)));
             sqlParameters.Add(new KeyValuePair<string, string>("@Download", entity.Download));
-            sqlParameters.Add(new KeyValuePair<string, string>("@NewsDate", Convert.ToString(entity.NewsDate)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@NewsDate",  entity.NewsDate));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
             var result = manageSQL.InsertData("InsertNewsLetter", sqlParameters);
             return JsonConvert.SerializeObject(result);
@@ -47,7 +47,7 @@ namespace EducationPortalAPI.Controllers.Forms
         public string Download { get; set; }
         public bool Flag { get; set; }
 
-        public DateTime NewsDate { get; set; }
+        public string NewsDate { get; set; }
 
     }
 }

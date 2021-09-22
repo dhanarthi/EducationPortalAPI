@@ -74,6 +74,7 @@ namespace EducationPortalAPI.Controllers.Zoom
                     meetting.SectionCode = entity.SectionCode;
                     meetting.RowId = 0;
                     meetting.Flag = true;
+                    meetting.StartURL = startURL;
                     ManageZoomSql _manageSQL = new ManageZoomSql();
                     _manageSQL.InsertData(meetting);
 
@@ -128,5 +129,6 @@ namespace EducationPortalAPI.Controllers.Zoom
         public DateTime CreatedDate { get; set; }
         public bool Flag { get; set; }
         public string HostEmail { get; set; }
+        public string StartURL { get; set; }
     }
 }
