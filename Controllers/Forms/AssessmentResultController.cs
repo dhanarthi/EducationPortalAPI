@@ -15,7 +15,7 @@ namespace EducationPortalAPI.Controllers.Forms
         [HttpPost("{id}")]
         public string Post([FromBody]List<OnlineAssessmentAnswers> entity)
         {
-            ManageAssessmentResult assessmentResult = new ManageAssessmentResult();
+           ManageAssessmentResult assessmentResult = new ManageAssessmentResult();
             var result = assessmentResult.InsertData(entity);
             return JsonConvert.SerializeObject(result);
         }

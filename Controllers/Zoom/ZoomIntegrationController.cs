@@ -11,6 +11,7 @@ using System.Text;
 using System.Net;
 using Newtonsoft.Json;
 using EducationPortalAPI.ManageSQL;
+using System.Data;
 
 namespace EducationPortalAPI.Controllers.Zoom
 {
@@ -62,11 +63,12 @@ namespace EducationPortalAPI.Controllers.Zoom
                 {
                     MeettingEntity meetting = new MeettingEntity();
                     meetting.MeetingId = (string)MyjObject["id"];
-                    meetting.MeetingURL = (string)MyjObject["start_url"]; ;
-                    meetting.Passcode = (string)MyjObject["id"]; ;
+                    meetting.MeetingURL = (string)MyjObject["join_url"]; ;
+                    meetting.Passcode = (string)MyjObject["password"]; ;
                     meetting.Topics = (string)MyjObject["topic"]; ;
                     meetting.Duration = (int)MyjObject["duration"]; ;
-                    meetting.MeetingDate = (DateTime)MyjObject["start_time"]; ;
+                    meetting.MeetingDate = (DateTime)MyjObject["start_time"];
+                    meetting.HostEmail = (string)MyjObject["host_email"];
                     meetting.ClassId = entity.ClassId;
                     meetting.SchoolId = entity.SchoolId;
                     meetting.SectionCode = entity.SectionCode;
@@ -85,6 +87,20 @@ namespace EducationPortalAPI.Controllers.Zoom
                 throw ex;
             }
 
+        }
+
+        [HttpGet("{id}")]
+        public string Get(string SchoolId, string ClassId, string SectionCode, string Date)
+        {
+            ManageSQLConnection manageSQL = new ManageSQLConnection();
+            DataSet ds = new DataSet();
+            List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
+            sqlParameters.Add(new KeyValuePair<string, string>("@Date", Date));
+            sqlParameters.Add(new KeyValuePair<string, string>("@SectionCode", SectionCode));
+            sqlParameters.Add(new KeyValuePair<string, string>("@ClassId", ClassId));
+            sqlParameters.Add(new KeyValuePair<string, string>("@SchoolId", SchoolId));
+            var data = manageSQL.GetDataSetValues("GetMeetingInfo", sqlParameters);
+            return JsonConvert.SerializeObject(data.Tables[0]);
         }
     }
     public class ZoomEntity
@@ -111,5 +127,6 @@ namespace EducationPortalAPI.Controllers.Zoom
         public string Passcode { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool Flag { get; set; }
+        public string HostEmail { get; set; }
     }
 }
