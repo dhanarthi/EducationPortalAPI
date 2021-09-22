@@ -53,13 +53,13 @@ namespace EducationPortalAPI.Controllers.Forms
         public string SchoolId { get; set; }
         public string StudentId { get; set; }
         public string duedate { get; set; }
-        public string ActualAmount { get; set; }
-        public string PaidAmount { get; set; }
-        public string OutstandingAmount { get; set; }
-        public string PayingAmount { get; set; }
-        public string FineAmount { get; set; }
-        public string ReceiptBook { get; set; }
-        public string FeeName { get; set; }
+        public decimal ActualAmount { get; set; }
+        public decimal PaidAmount { get; set; }
+        public decimal OutstandingAmount { get; set; }
+        public decimal PayingAmount { get; set; }
+        public decimal FineAmount { get; set; }
+        public decimal ReceiptBook { get; set; }
+        public decimal FeeName { get; set; }
         public bool Flag { get; set; }
     }
 }
