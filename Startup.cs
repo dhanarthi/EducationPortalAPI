@@ -36,7 +36,7 @@ namespace EducationPortalAPI
             }
 
             app.UseCors(options =>
-          options.WithOrigins("http://localhost:4200", "http://180.179.49.72:8088")
+          options.WithOrigins("http://localhost:4200", "http://180.179.49.72:8088", "https://180.179.49.72/", "https://tncsc-scm.in/EducationPortal")
           .AllowAnyMethod()
           .AllowAnyHeader()
           .AllowCredentials()
