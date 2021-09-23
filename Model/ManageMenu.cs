@@ -37,21 +37,30 @@ namespace EducationPortalAPI.Model
         public List<Menu> ConvertDataTableToList(DataTable dataTable)
         {
             List<Menu> menus = new List<Menu>();
-            if (dataTable.Rows.Count > 0)
-            {
-                menus = (from DataRow dr in dataTable.Rows
-                         select new Menu()
-                         {
-                             ID = Convert.ToInt32(dr["ID"]),
-                             label = Convert.ToString(dr["Name"]),
-                             parentId = Convert.ToInt32(dr["ParentId"]),
-                             ICon = Convert.ToInt32(dr["ICon"]),
-                             RoleId = Convert.ToInt32(dr["RoleId"]),
-                             routerLink = Convert.ToString(dr["URL"]),
-                             isActive = Convert.ToBoolean(dr["IsActive"])
-                         }).ToList();
 
+            try
+            {
+                if (dataTable.Rows.Count > 0)
+                {
+                    menus = (from DataRow dr in dataTable.Rows
+                             select new Menu()
+                             {
+                                 ID = Convert.ToInt32(dr["ID"] != null ? dr["ID"] : 0),
+                                 label = Convert.ToString(dr["Name"] != null ? dr["Name"] : ""),
+                                 parentId = Convert.ToInt32(dr["ParentId"] != null ? dr["ParentId"] : 0),
+                                 ICon = Convert.ToString(dr["ICon"] != null ? dr["ICon"] : ""),
+                                 RoleId = Convert.ToInt32(dr["RoleId"] != null ? dr["RoleId"]: 0),
+                                 routerLink = Convert.ToString(dr["URL"] != null ? dr["URL"] : ""),
+                                 isActive = Convert.ToBoolean(dr["IsActive"] != null ? dr["IsActive"] : 1)
+                             }).ToList();
+
+                }
             }
+            catch (Exception ex)
+            {
+                AuditLog.WriteError(ex.Message);
+            }
+         
             return menus;
         }
         private static List<T> ConvertDataTable<T>(DataTable dt)
@@ -88,7 +97,7 @@ namespace EducationPortalAPI.Model
         public string label { get; set; }
         public string routerLink { get; set; }
         public int? parentId { get; set; }
-        public int ICon { get; set; }
+        public string ICon { get; set; }
         public bool isActive { get; set; }
         public int RoleId { get; set; }
         public List<Menu> items { get; set; }
