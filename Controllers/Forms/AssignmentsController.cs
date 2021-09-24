@@ -22,8 +22,8 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@AssignId", Convert.ToString(entity.AssignId)));
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", entity.SchoolID));
             sqlParameters.Add(new KeyValuePair<string, string>("@Class", Convert.ToString(entity.Class)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@AssignmentDate", Convert.ToString(entity.AssignmentDate)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@AssignmentDueDate", Convert.ToString(entity.AssignmentDueDate)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@AssignmentDate", entity.AssignmentDate));
+            sqlParameters.Add(new KeyValuePair<string, string>("@AssignmentDueDate", entity.AssignmentDueDate));
             sqlParameters.Add(new KeyValuePair<string, string>("@AssignmentWork", entity.AssignmentWork));
             sqlParameters.Add(new KeyValuePair<string, string>("@AssignmentType", entity.AssignmentType));
             sqlParameters.Add(new KeyValuePair<string, string>("@Subjectname", entity.Subjectname));
@@ -48,8 +48,8 @@ namespace EducationPortalAPI.Controllers.Forms
         public Int64 AssignId { get; set; }
         public string SchoolID { get; set; }
         public string Class { get; set; }
-        public DateTime AssignmentDate { get; set; }
-        public DateTime AssignmentDueDate { get; set; }
+        public string AssignmentDate { get; set; }
+        public string AssignmentDueDate { get; set; }
         public string AssignmentWork { get; set; }
         public string AssignmentType { get; set; }
         public string Subjectname { get; set; }

@@ -23,12 +23,12 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@Academic", Convert.ToString(entity.Academic)));
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolId", entity.SchoolId));
             sqlParameters.Add(new KeyValuePair<string, string>("@StudentId", entity.StudentId));
-            sqlParameters.Add(new KeyValuePair<string, string>("@duedate", Convert.ToString(entity.duedate)));
-            sqlParameters.Add(new KeyValuePair<string, string>("@ActualAmount", entity.ActualAmount));
-            sqlParameters.Add(new KeyValuePair<string, string>("@PaidAmount", entity.PaidAmount));
-            sqlParameters.Add(new KeyValuePair<string, string>("@OutstandingAmount", entity.OutstandingAmount));
-            sqlParameters.Add(new KeyValuePair<string, string>("@PayingAmount", entity.PayingAmount));
-            sqlParameters.Add(new KeyValuePair<string, string>("@FineAmount", entity.FineAmount));
+            sqlParameters.Add(new KeyValuePair<string, string>("@duedate", entity.duedate));
+            sqlParameters.Add(new KeyValuePair<string, string>("@ActualAmount", Convert.ToString(entity.ActualAmount)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@PaidAmount", Convert.ToString(entity.PaidAmount)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@OutstandingAmount", Convert.ToString(entity.OutstandingAmount)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@PayingAmount", Convert.ToString(entity.PayingAmount)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@FineAmount", Convert.ToString(entity.FineAmount)));
             sqlParameters.Add(new KeyValuePair<string, string>("@ReceiptBook", entity.ReceiptBook));
             sqlParameters.Add(new KeyValuePair<string, string>("@FeeName", entity.FeeName));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
@@ -53,11 +53,11 @@ namespace EducationPortalAPI.Controllers.Forms
         public string SchoolId { get; set; }
         public string StudentId { get; set; }
         public string duedate { get; set; }
-        public string ActualAmount { get; set; }
-        public string PaidAmount { get; set; }
-        public string OutstandingAmount { get; set; }
-        public string PayingAmount { get; set; }
-        public string FineAmount { get; set; }
+        public decimal ActualAmount { get; set; }
+        public decimal PaidAmount { get; set; }
+        public decimal OutstandingAmount { get; set; }
+        public decimal PayingAmount { get; set; }
+        public decimal FineAmount { get; set; }
         public string ReceiptBook { get; set; }
         public string FeeName { get; set; }
         public bool Flag { get; set; }

@@ -21,7 +21,7 @@ namespace EducationPortalAPI.Controllers.Forms
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
             sqlParameters.Add(new KeyValuePair<string, string>("@RowId", Convert.ToString(entity.RowId)));
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", entity.SchoolID));
-            sqlParameters.Add(new KeyValuePair<string, string>("@eventdate", Convert.ToString(entity.eventdate)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@eventdate",  entity.eventdate));
             sqlParameters.Add(new KeyValuePair<string, string>("@StudentId", entity.StudentId));
             sqlParameters.Add(new KeyValuePair<string, string>("@EventDetailS", entity.EventDetailS));
             sqlParameters.Add(new KeyValuePair<string, string>("@Place", entity.Place));
@@ -46,7 +46,7 @@ namespace EducationPortalAPI.Controllers.Forms
         public Int64 RowId { get; set; }
         public string SchoolID { get; set; }
         public string StudentId { get; set; }
-        public DateTime eventdate { get; set; }
+        public string eventdate { get; set; }
         public string EventDetailS { get; set; }
         public string Place { get; set; }
         public string AchievementStatus { get; set; }
