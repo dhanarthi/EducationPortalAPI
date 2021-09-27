@@ -52,6 +52,7 @@ namespace EducationPortalAPI.Controllers.Forms
                 sqlParameters.Add(new KeyValuePair<string, string>("@State", Convert.ToString(registrationForm.State)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@UserId", "-"));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Password", registrationForm.Password));
+                sqlParameters.Add(new KeyValuePair<string, string>("@Religion", registrationForm.Religion));
 
                 sqlParameters.Add(new KeyValuePair<string, string>("@FatherName", registrationForm.FatherName));
                 sqlParameters.Add(new KeyValuePair<string, string>("@FatherOccupation", registrationForm.FatherOccupation));
@@ -149,5 +150,6 @@ namespace EducationPortalAPI.Controllers.Forms
         public string City { get; set; }
         public string State { get; set; }
         public string Password { get; set; }
+        public string Religion { get; set; }
     }
 }
