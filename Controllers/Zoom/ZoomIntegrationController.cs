@@ -71,6 +71,7 @@ namespace EducationPortalAPI.Controllers.Zoom
                     meetting.HostEmail = (string)MyjObject["host_email"];
                     meetting.ClassId = entity.ClassId;
                     meetting.SchoolId = entity.SchoolId;
+                    meetting.MeetingTime = entity.MeetingTime;
                     meetting.SectionCode = entity.SectionCode;
                     meetting.RowId = 0;
                     meetting.Flag = true;
@@ -110,6 +111,7 @@ namespace EducationPortalAPI.Controllers.Zoom
         public int SectionCode { get; set; }
         public string SchoolId { get; set; }
         public DateTime MeetingDate { get; set; }
+        public string MeetingTime { get; set; }
         public int Duration { get; set; }
         public string Topics { get; set; }
     }
@@ -121,6 +123,7 @@ namespace EducationPortalAPI.Controllers.Zoom
         public int SectionCode { get; set; }
         public string SchoolId { get; set; }
         public DateTime MeetingDate { get; set; }
+        public string MeetingTime { get; set; }
         public int Duration { get; set; }
         public string MeetingId { get; set; }
         public string MeetingURL { get; set; }
