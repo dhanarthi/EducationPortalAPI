@@ -26,6 +26,7 @@ namespace EducationPortalAPI.Model
                     parentId = x.parentId,
                     routerLink = x.routerLink,
                     isActive = x.isActive,
+                    icon = x.icon,
                     items = GetMenuTree(list, x.ID)
                 }).ToList();
             }
@@ -48,7 +49,7 @@ namespace EducationPortalAPI.Model
                                  ID = Convert.ToInt32(dr["ID"] != null ? dr["ID"] : 0),
                                  label = Convert.ToString(dr["Name"] != null ? dr["Name"] : ""),
                                  parentId = Convert.ToInt32(dr["ParentId"] != null ? dr["ParentId"] : 0),
-                                 ICon = Convert.ToString(dr["ICon"] != null ? dr["ICon"] : ""),
+                                 icon = Convert.ToString(dr["ICon"] != null ? dr["ICon"] : ""),
                                  RoleId = Convert.ToInt32(dr["RoleId"] != null ? dr["RoleId"]: 0),
                                  routerLink = Convert.ToString(dr["URL"] != null ? dr["URL"] : ""),
                                  isActive = Convert.ToBoolean(dr["IsActive"] != null ? dr["IsActive"] : 1)
@@ -97,7 +98,7 @@ namespace EducationPortalAPI.Model
         public string label { get; set; }
         public string routerLink { get; set; }
         public int? parentId { get; set; }
-        public string ICon { get; set; }
+        public string icon { get; set; }
         public bool isActive { get; set; }
         public int RoleId { get; set; }
         public List<Menu> items { get; set; }

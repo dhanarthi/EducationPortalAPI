@@ -14,8 +14,6 @@ namespace EducationPortalAPI.ManageSQL
         SqlConnection sqlConnection = new SqlConnection();
         SqlCommand sqlCommand = new SqlCommand();
 
-        SqlDataAdapter dataAdapter;
-
         public bool InsertData(List<OnlineAssessmentAnswers> entity)
         {
             SqlTransaction objTrans = null;
@@ -62,7 +60,7 @@ namespace EducationPortalAPI.ManageSQL
                 sqlConnection.Close();
                 sqlCommand.Dispose();
                 ds.Dispose();
-                dataAdapter = null;
+  
             }
         }
     }

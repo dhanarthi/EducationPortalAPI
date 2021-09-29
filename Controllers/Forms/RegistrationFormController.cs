@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using EducationPortalAPI.ManageSQL;
 using System.Data;
 using Newtonsoft.Json;
+using EducationPortalAPI.Model;
 
 namespace EducationPortalAPI.Controllers.Forms
 {
@@ -18,10 +19,11 @@ namespace EducationPortalAPI.Controllers.Forms
         public Tuple<bool, int, string> Post(RegistrationFormEntity registrationForm = null)
         {
             ManageSQLConnection manageSQLConnection = new ManageSQLConnection();
-
+            Security security = new Security();
             //Check the document Approval
             try
             {
+                string entryptedPwd = security.Encryptword(registrationForm.Password);
                 List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
                 sqlParameters.Add(new KeyValuePair<string, string>("@ID", registrationForm.ID));
                 sqlParameters.Add(new KeyValuePair<string, string>("@slno1", Convert.ToString(registrationForm.slno)));
@@ -52,6 +54,12 @@ namespace EducationPortalAPI.Controllers.Forms
                 sqlParameters.Add(new KeyValuePair<string, string>("@State", Convert.ToString(registrationForm.State)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@UserId", "-"));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Password", registrationForm.Password));
+                sqlParameters.Add(new KeyValuePair<string, string>("@Religion", registrationForm.Religion));
+                sqlParameters.Add(new KeyValuePair<string, string>("@IncomeFilename", registrationForm.IncomeFilename));
+                sqlParameters.Add(new KeyValuePair<string, string>("@NativityFilename", registrationForm.NativityFilename));
+                sqlParameters.Add(new KeyValuePair<string, string>("@CommunityFilename", registrationForm.CommunityFilename));
+                sqlParameters.Add(new KeyValuePair<string, string>("@YearlyIncome", registrationForm.YearlyIncome));
+                sqlParameters.Add(new KeyValuePair<string, string>("@Disability", registrationForm.Disability));
 
                 sqlParameters.Add(new KeyValuePair<string, string>("@FatherName", registrationForm.FatherName));
                 sqlParameters.Add(new KeyValuePair<string, string>("@FatherOccupation", registrationForm.FatherOccupation));
@@ -69,6 +77,8 @@ namespace EducationPortalAPI.Controllers.Forms
                 sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianOccupation", registrationForm.GaurdianOccupation));
                 sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianMobileNo", registrationForm.GaurdianMobileNo));
                 sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianPhotoFileName", registrationForm.GaurdianPhotoFileName));
+
+                sqlParameters.Add(new KeyValuePair<string, string>("@EncrptedPwd", entryptedPwd));
 
                 var resut = manageSQLConnection.InsertData("InsertRegistration", sqlParameters, "slno");
                 return resut;
@@ -149,5 +159,11 @@ namespace EducationPortalAPI.Controllers.Forms
         public string City { get; set; }
         public string State { get; set; }
         public string Password { get; set; }
+        public string Religion { get; set; }
+        public string IncomeFilename { get; set; }
+        public string NativityFilename { get; set; }
+        public string CommunityFilename { get; set; }
+        public string Disability { get; set; }
+        public string YearlyIncome { get; set; }
     }
 }

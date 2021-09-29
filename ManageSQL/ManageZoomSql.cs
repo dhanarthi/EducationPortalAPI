@@ -21,6 +21,7 @@ namespace EducationPortalAPI.ManageSQL
                 sqlParameters.Add(new KeyValuePair<string, string>("@Passcode", entity.Passcode));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Topics", entity.Topics));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Duration", Convert.ToString(entity.Duration)));
+                sqlParameters.Add(new KeyValuePair<string, string>("@MeetingTime", Convert.ToString(entity.MeetingTime)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@MeetingDate", Convert.ToString(entity.MeetingDate)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@ClassId", Convert.ToString(entity.ClassId)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@SchoolId", entity.SchoolId));
