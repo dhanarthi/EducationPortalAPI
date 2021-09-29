@@ -26,6 +26,7 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@EventDetailS", entity.EventDetailS));
             sqlParameters.Add(new KeyValuePair<string, string>("@Place", entity.Place));
             sqlParameters.Add(new KeyValuePair<string, string>("@AchievementStatus", entity.AchievementStatus));
+            sqlParameters.Add(new KeyValuePair<string, string>("@filename", entity.filename));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
             var result = manageSQL.InsertData("InsertAchievements", sqlParameters);
             return JsonConvert.SerializeObject(result);
@@ -50,6 +51,7 @@ namespace EducationPortalAPI.Controllers.Forms
         public string EventDetailS { get; set; }
         public string Place { get; set; }
         public string AchievementStatus { get; set; }
+        public string filename { get; set; }
         public bool Flag { get; set; }
     }
 }
