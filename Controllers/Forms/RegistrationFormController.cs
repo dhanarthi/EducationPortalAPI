@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using EducationPortalAPI.ManageSQL;
 using System.Data;
 using Newtonsoft.Json;
+using EducationPortalAPI.Model;
 
 namespace EducationPortalAPI.Controllers.Forms
 {
@@ -18,10 +19,11 @@ namespace EducationPortalAPI.Controllers.Forms
         public Tuple<bool, int, string> Post(RegistrationFormEntity registrationForm = null)
         {
             ManageSQLConnection manageSQLConnection = new ManageSQLConnection();
-
+            Security security = new Security();
             //Check the document Approval
             try
             {
+                string entryptedPwd = security.Encryptword(registrationForm.Password);
                 List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
                 sqlParameters.Add(new KeyValuePair<string, string>("@ID", registrationForm.ID));
                 sqlParameters.Add(new KeyValuePair<string, string>("@slno1", Convert.ToString(registrationForm.slno)));
@@ -75,6 +77,8 @@ namespace EducationPortalAPI.Controllers.Forms
                 sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianOccupation", registrationForm.GaurdianOccupation));
                 sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianMobileNo", registrationForm.GaurdianMobileNo));
                 sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianPhotoFileName", registrationForm.GaurdianPhotoFileName));
+
+                sqlParameters.Add(new KeyValuePair<string, string>("@EncrptedPwd", entryptedPwd));
 
                 var resut = manageSQLConnection.InsertData("InsertRegistration", sqlParameters, "slno");
                 return resut;

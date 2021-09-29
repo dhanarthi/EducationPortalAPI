@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EducationPortalAPI.Model;
 
 namespace EducationPortalAPI.Controllers
 {
@@ -14,7 +15,10 @@ namespace EducationPortalAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            Security security = new Security();
+            string encryptValue = security.Encryptword("123");
+            string decryptValue = security.Decryptword(encryptValue);
+            return new string[] { encryptValue, decryptValue };
         }
 
         // GET api/values/5
