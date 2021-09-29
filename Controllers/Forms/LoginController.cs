@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EducationPortalAPI.Model;
+using System.Data;
 
 namespace EducationPortalAPI.Controllers.Forms
 {
@@ -15,7 +16,7 @@ namespace EducationPortalAPI.Controllers.Forms
     public class LoginController : ControllerBase
     {
         [HttpGet("{id}")]
-        public Tuple<bool, string, string> Get(int Type, string Value, int RoleId, string Password)
+        public Tuple<bool, string, DataTable> Get(int Type, string Value, int RoleId, string Password)
         {
             Security security = new Security();
             string RoleName = string.Empty;
@@ -39,35 +40,35 @@ namespace EducationPortalAPI.Controllers.Forms
                             {
                                 if(Convert.ToString(data.Tables[0].Rows[0]["EncrptedPwd"]) == security.Encryptword(Password))
                                 {
-                                    return new Tuple<bool, string, string>(true, "Login Successfully ", JsonConvert.SerializeObject(data.Tables[0]));
+                                    return new Tuple<bool, string, DataTable>(true, "Login Successfully ", data.Tables[0]);
 
                                 }
                                 else
                                 {
-                                    return new Tuple<bool, string, string>(false, "Password Incorrect, Pleas enter correct password" , "");
+                                    return new Tuple<bool, string, DataTable>(false, "Password Incorrect, Pleas enter correct password" , null);
                                 }
                             }
                             else
                             {
-                                return new Tuple<bool, string, string>(false, "You are authorized to login the " + RoleName, "");
+                                return new Tuple<bool, string, DataTable>(false, "You are authorized to login the " + RoleName, null);
                             }
                         }
                         else
                         {
-                            return new Tuple<bool, string, string>(false, "Invalid User Name", "");
+                            return new Tuple<bool, string, DataTable>(false, "Invalid User Name", null);
                         }
                     }
                     else
                     {
-                        return new Tuple<bool, string, string>(false, "Invalid User Name", "");
+                        return new Tuple<bool, string, DataTable>(false, "Invalid User Name", null);
                     }
                 }
-                return new Tuple<bool, string, string> (false," Please try later", "");
+                return new Tuple<bool, string, DataTable> (false," Please try later", null);
             }
             catch (Exception ex)
             {
                 AuditLog.WriteError(ex.Message);
-                return new Tuple<bool, string, string>(false, "Please try later", "");
+                return new Tuple<bool, string, DataTable>(false, "Please try later", null);
             }
 
         }
