@@ -19,7 +19,7 @@ namespace EducationPortalAPI.Controllers.Masters
             ManageSQLConnection manageSQL = new ManageSQLConnection();
             DataSet ds = new DataSet();
             ds = manageSQL.GetDataSetValues("GetAccountYear");
-            return JsonConvert.SerializeObject(ds);
+            return JsonConvert.SerializeObject(ds.Tables[0]);
         }
     }
 }
