@@ -55,6 +55,11 @@ namespace EducationPortalAPI.Controllers.Forms
                 sqlParameters.Add(new KeyValuePair<string, string>("@UserId", "-"));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Password", registrationForm.Password));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Religion", registrationForm.Religion));
+                sqlParameters.Add(new KeyValuePair<string, string>("@IncomeFilename", registrationForm.IncomeFilename));
+                sqlParameters.Add(new KeyValuePair<string, string>("@NativityFilename", registrationForm.NativityFilename));
+                sqlParameters.Add(new KeyValuePair<string, string>("@CommunityFilename", registrationForm.CommunityFilename));
+                sqlParameters.Add(new KeyValuePair<string, string>("@YearlyIncome", registrationForm.YearlyIncome));
+                sqlParameters.Add(new KeyValuePair<string, string>("@Disability", registrationForm.Disability));
 
                 sqlParameters.Add(new KeyValuePair<string, string>("@FatherName", registrationForm.FatherName));
                 sqlParameters.Add(new KeyValuePair<string, string>("@FatherOccupation", registrationForm.FatherOccupation));
@@ -155,5 +160,10 @@ namespace EducationPortalAPI.Controllers.Forms
         public string State { get; set; }
         public string Password { get; set; }
         public string Religion { get; set; }
+        public string IncomeFilename { get; set; }
+        public string NativityFilename { get; set; }
+        public string CommunityFilename { get; set; }
+        public string Disability { get; set; }
+        public string YearlyIncome { get; set; }
     }
 }
