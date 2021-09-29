@@ -43,11 +43,21 @@ namespace EducationPortalAPI.Controllers.Zoom
                 var tokenString = tokenHandler.WriteToken(token);
 
                 //Create Request
-
+                try
+                {
+                    string[] timeSplit = entity.MeetingTime.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+                    TimeSpan time = new TimeSpan(0, Convert.ToInt32(timeSplit[0]), Convert.ToInt32(timeSplit[1].Substring(0, 1)), 0, 0);
+                    entity.MeetingDate = entity.MeetingDate.Add(time);
+                }
+                catch (Exception ex)
+                {
+                    AuditLog.WriteError(ex.Message);
+                }
+               
                 var client = new RestClient("https://api.zoom.us/v2/users/dulasimca@gmail.com/meetings");
                 var request = new RestRequest(Method.POST);
                 request.RequestFormat = DataFormat.Json;
-                request.AddJsonBody(new { topic = entity.Topics, duration = entity.Duration, start_time =entity.MeetingDate, type = "2" });
+                request.AddJsonBody(new { topic = entity.Topics, duration = entity.Duration, start_time = entity.MeetingDate, type = "2" });
                 request.AddHeader("authorization", String.Format("Bearer {0}", tokenString));
 
 
@@ -58,7 +68,7 @@ namespace EducationPortalAPI.Controllers.Zoom
                 string startURL = (string)MyjObject["start_url"];
                 string JoinURL = (string)MyjObject["join_url"];
                 string SuccessCode = Convert.ToString(numericStatusCode);
-   
+
                 if (numericStatusCode == 201)
                 {
                     MeettingEntity meetting = new MeettingEntity();
@@ -71,6 +81,7 @@ namespace EducationPortalAPI.Controllers.Zoom
                     meetting.HostEmail = (string)MyjObject["host_email"];
                     meetting.ClassId = entity.ClassId;
                     meetting.SchoolId = entity.SchoolId;
+                    meetting.MeetingTime = entity.MeetingTime;
                     meetting.SectionCode = entity.SectionCode;
                     meetting.RowId = 0;
                     meetting.Flag = true;
@@ -110,6 +121,7 @@ namespace EducationPortalAPI.Controllers.Zoom
         public int SectionCode { get; set; }
         public string SchoolId { get; set; }
         public DateTime MeetingDate { get; set; }
+        public string MeetingTime { get; set; }
         public int Duration { get; set; }
         public string Topics { get; set; }
     }
@@ -121,6 +133,7 @@ namespace EducationPortalAPI.Controllers.Zoom
         public int SectionCode { get; set; }
         public string SchoolId { get; set; }
         public DateTime MeetingDate { get; set; }
+        public string MeetingTime { get; set; }
         public int Duration { get; set; }
         public string MeetingId { get; set; }
         public string MeetingURL { get; set; }
