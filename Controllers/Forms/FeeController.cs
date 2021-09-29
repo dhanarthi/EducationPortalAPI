@@ -31,6 +31,7 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@FineAmount", Convert.ToString(entity.FineAmount)));
             sqlParameters.Add(new KeyValuePair<string, string>("@ReceiptBook", entity.ReceiptBook));
             sqlParameters.Add(new KeyValuePair<string, string>("@FeeName", entity.FeeName));
+            sqlParameters.Add(new KeyValuePair<string, string>("@PayMethod", "Offline"));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
             var result = manageSQL.InsertData("InsertFee", sqlParameters);
             return JsonConvert.SerializeObject(result);
