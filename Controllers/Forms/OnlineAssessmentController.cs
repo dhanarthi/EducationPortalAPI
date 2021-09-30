@@ -51,6 +51,8 @@ namespace EducationPortalAPI.Controllers.Forms
         public int DurationType { get; set; }
         public int SubjectId { get; set; }
         public bool Flag { get; set; }
+        public int Medium { get; set; }
+        public string AssessmentTime { get; set; }
         public List<OnlineAssessmentQuestionsEntity> Questions { get; set; }
     }
     public class OnlineAssessmentQuestionsEntity
