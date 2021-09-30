@@ -29,6 +29,7 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@Subjectname", entity.Subjectname));
             sqlParameters.Add(new KeyValuePair<string, string>("@Assignmentfilename", entity.Assignmentfilename));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@SectionId", entity.SectionId));
             var result = manageSQL.InsertData("InsertAssignments", sqlParameters);
             return JsonConvert.SerializeObject(result);
         }
@@ -55,6 +56,7 @@ namespace EducationPortalAPI.Controllers.Forms
         public string AssignmentType { get; set; }
         public string Subjectname { get; set; }
         public string Assignmentfilename { get; set; }
+        public string SectionId { get; set; }
         public bool Flag { get; set; }
     }
 }
