@@ -25,6 +25,9 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@NomineeID", entity.NomineeID));
             sqlParameters.Add(new KeyValuePair<string, string>("@ElectionName", entity.ElectionName));
             sqlParameters.Add(new KeyValuePair<string, string>("@ElectionDate", entity.ElectionDate));
+            sqlParameters.Add(new KeyValuePair<string, string>("@ElectionDate", entity.ElectionDate));
+            sqlParameters.Add(new KeyValuePair<string, string>("@ClassId", entity.ClassId));
+            sqlParameters.Add(new KeyValuePair<string, string>("@SectionId", entity.SectionId));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
             var result = manageSQL.InsertData("InsertNominee", sqlParameters);
             return JsonConvert.SerializeObject(result);
@@ -49,6 +52,9 @@ namespace EducationPortalAPI.Controllers.Forms
         public string NomineeID { get; set; }
         public string ElectionName { get; set; }
         public string ElectionDate { get; set; }
+        public string ClassId { get; set; }
+
+        public string SectionId { get; set; }
         public bool Flag { get; set; }
     }
 }
