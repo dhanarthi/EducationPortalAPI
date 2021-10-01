@@ -27,6 +27,7 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@ClassId", Convert.ToString(entity.ClassId)));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
             sqlParameters.Add(new KeyValuePair<string, string>("@Years",  entity.Years));
+            sqlParameters.Add(new KeyValuePair<string, string>("@medium", Convert.ToString(entity.medium)));
             var result = manageSQL.InsertData("InsertBooks", sqlParameters);
             return JsonConvert.SerializeObject(result);
         }
@@ -52,5 +53,7 @@ namespace EducationPortalAPI.Controllers.Forms
         public bool Flag { get; set; }
         
         public string Years { get; set; }
+
+        public string medium { get; set; }
     }
 }
