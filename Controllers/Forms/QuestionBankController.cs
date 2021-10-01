@@ -37,11 +37,11 @@ namespace EducationPortalAPI.Controllers.Forms
                 AuditLog.WriteError(ex.Message);
                 return false;
             }
-           
+
         }
 
         [HttpGet("{id}")]
-        public string Get(string SchoolID, int QuestionYear,int Classcode)
+        public string Get(string SchoolID, int QuestionYear, int Classcode)
         {
             try
             {
@@ -61,6 +61,23 @@ namespace EducationPortalAPI.Controllers.Forms
 
         }
 
+        [HttpPut("{id}")]
+        public bool Put([FromBody]string Index)
+        {
+            try
+            {
+                List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
+                ManageSQLConnection manageSQL = new ManageSQLConnection();
+                sqlParameters.Add(new KeyValuePair<string, string>("@Id", Index));
+                return manageSQL.UpdateValues("DeleteQuestionBank", sqlParameters);
+            }
+            catch (Exception ex)
+            {
+                AuditLog.WriteError(ex.Message);
+                return false;
+            }
+
+        }
     }
     public class QuestionBankEntity
     {
