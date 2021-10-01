@@ -44,6 +44,8 @@ namespace EducationPortalAPI.ManageSQL
                 sqlCommand.Parameters.AddWithValue("@questiontype", entity.QuestionType);
                 sqlCommand.Parameters.AddWithValue("@Flag", entity.Flag);
                 sqlCommand.Parameters.AddWithValue("@AssessmentDate", entity.AssessmentDate);
+                sqlCommand.Parameters.AddWithValue("@AssessmentTime", entity.AssessmentTime);
+                sqlCommand.Parameters.AddWithValue("@Medium", entity.Medium);
                 sqlCommand.Parameters.Add("@RowId", SqlDbType.BigInt, 13);
                 sqlCommand.Parameters["@RowId"].Direction = ParameterDirection.Output;
                 sqlCommand.ExecuteNonQuery();
