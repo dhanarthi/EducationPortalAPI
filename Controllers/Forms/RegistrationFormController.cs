@@ -58,18 +58,19 @@ namespace EducationPortalAPI.Controllers.Forms
                 sqlParameters.Add(new KeyValuePair<string, string>("@IncomeFilename", registrationForm.IncomeFilename));
                 sqlParameters.Add(new KeyValuePair<string, string>("@NativityFilename", registrationForm.NativityFilename));
                 sqlParameters.Add(new KeyValuePair<string, string>("@CommunityFilename", registrationForm.CommunityFilename));
-                sqlParameters.Add(new KeyValuePair<string, string>("@YearlyIncome", registrationForm.YearlyIncome));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Disability", registrationForm.Disability));
 
                 sqlParameters.Add(new KeyValuePair<string, string>("@FatherName", registrationForm.FatherName));
                 sqlParameters.Add(new KeyValuePair<string, string>("@FatherOccupation", registrationForm.FatherOccupation));
                 sqlParameters.Add(new KeyValuePair<string, string>("@FatherMobileNo", registrationForm.FatherMobileNo));
                 sqlParameters.Add(new KeyValuePair<string, string>("@FatherEmailid", registrationForm.FatherEmailid));
+                sqlParameters.Add(new KeyValuePair<string, string>("@FYearlyIncome", registrationForm.FatherYearlyIncome));
                 sqlParameters.Add(new KeyValuePair<string, string>("@FatherPhotoFileName", registrationForm.FatherPhotoFileName));
                 sqlParameters.Add(new KeyValuePair<string, string>("@MotherName", registrationForm.MotherName));
                 sqlParameters.Add(new KeyValuePair<string, string>("@MotherOccupation", registrationForm.MotherOccupation));
                 sqlParameters.Add(new KeyValuePair<string, string>("@MotherMobileNo", registrationForm.MotherMobileNo));
                 sqlParameters.Add(new KeyValuePair<string, string>("@MotherEmailid", registrationForm.MotherEmailid));
+                sqlParameters.Add(new KeyValuePair<string, string>("@MYearlyIncome", registrationForm.MotherYearlyIncome));
                 sqlParameters.Add(new KeyValuePair<string, string>("@MotherPhotoFilName", registrationForm.MotherPhotoFilName));
                
                 sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianName", registrationForm.GaurdianName));
@@ -137,10 +138,12 @@ namespace EducationPortalAPI.Controllers.Forms
         public string FatherOccupation { get; set; }
         public string FatherMobileNo { get; set; }
         public string FatherEmailid { get; set; }
+        public string FatherYearlyIncome { get; set; }
         public string MotherName { get; set; }
         public string MotherOccupation { get; set; }
         public string MotherMobileNo { get; set; }
         public string MotherEmailid { get; set; }
+        public string MotherYearlyIncome { get; set; }
         public string Nameoflastschool { get; set; }
         public string LastchoolTelephone { get; set; }
         public int DistrictId { get; set; }
@@ -164,6 +167,5 @@ namespace EducationPortalAPI.Controllers.Forms
         public string NativityFilename { get; set; }
         public string CommunityFilename { get; set; }
         public string Disability { get; set; }
-        public string YearlyIncome { get; set; }
     }
 }
