@@ -32,6 +32,8 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@ReceiptBook", entity.ReceiptBook));
             sqlParameters.Add(new KeyValuePair<string, string>("@FeeName", entity.FeeName));
             sqlParameters.Add(new KeyValuePair<string, string>("@PayMethod", "Offline"));
+            sqlParameters.Add(new KeyValuePair<string, string>("@ClassId", entity.ClassId));
+            sqlParameters.Add(new KeyValuePair<string, string>("@SectionId", entity.SectionId));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
             var result = manageSQL.InsertData("InsertFee", sqlParameters);
             return JsonConvert.SerializeObject(result);
@@ -61,6 +63,9 @@ namespace EducationPortalAPI.Controllers.Forms
         public decimal FineAmount { get; set; }
         public string ReceiptBook { get; set; }
         public string FeeName { get; set; }
+
+        public string ClassId { get; set; }
+        public string SectionId { get; set; }
         public bool Flag { get; set; }
     }
 }
