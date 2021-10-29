@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using EducationPortalAPI.ManageSQL;
@@ -18,6 +19,16 @@ namespace EducationPortalAPI.Controllers.Forms
            ManageAssessmentResult assessmentResult = new ManageAssessmentResult();
             var result = assessmentResult.InsertData(entity);
             return JsonConvert.SerializeObject(result);
+        }
+        [HttpGet("{id}")]
+        public string Get(string TestID)
+        {
+            ManageSQLConnection manageSQL = new ManageSQLConnection();
+            DataSet ds = new DataSet();
+            List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
+            sqlParameters.Add(new KeyValuePair<string, string>("@TestID", TestID));
+            var data = manageSQL.GetDataSetValues("CheckOnlineAssessment", sqlParameters);
+            return JsonConvert.SerializeObject(data);
         }
     }
 }
