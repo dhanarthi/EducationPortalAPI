@@ -25,7 +25,6 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@NomineeID", entity.NomineeID));
             sqlParameters.Add(new KeyValuePair<string, string>("@ElectionName", entity.ElectionName));
             sqlParameters.Add(new KeyValuePair<string, string>("@ElectionDate", entity.ElectionDate));
-            sqlParameters.Add(new KeyValuePair<string, string>("@ElectionDate", entity.ElectionDate));
             sqlParameters.Add(new KeyValuePair<string, string>("@ClassId", entity.ClassId));
             sqlParameters.Add(new KeyValuePair<string, string>("@SectionId", entity.SectionId));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
