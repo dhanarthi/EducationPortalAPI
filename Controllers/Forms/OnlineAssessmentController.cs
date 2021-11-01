@@ -35,6 +35,27 @@ namespace EducationPortalAPI.Controllers.Forms
             return JsonConvert.SerializeObject(data.Tables[0]);
         }
 
+        [HttpPut("{id}")]
+        public bool Put(OnlineAssessmentMasterEntity entity)
+        {
+            ManageSQLConnection manageSQL = new ManageSQLConnection();
+            List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
+            try
+            {
+                sqlParameters.Add(new KeyValuePair<string, string>("@TestId", Convert.ToString(entity.RowId)));
+                sqlParameters.Add(new KeyValuePair<string, string>("@Flag", "1"));
+                var result = manageSQL.UpdateValues("SetAssessmentSubmitStatus", sqlParameters);
+                return result;
+            }
+
+            catch(Exception ex)
+            {
+                AuditLog.WriteError(ex.Message);
+                return false;
+            }
+
+        }
+
     }
     public class OnlineAssessmentMasterEntity
     {
