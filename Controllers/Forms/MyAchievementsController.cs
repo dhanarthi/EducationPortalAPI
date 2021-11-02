@@ -24,6 +24,7 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@eventdate",  entity.eventdate));
             sqlParameters.Add(new KeyValuePair<string, string>("@StudentId", entity.StudentId));
             sqlParameters.Add(new KeyValuePair<string, string>("@EventDetailS", entity.EventDetailS));
+            sqlParameters.Add(new KeyValuePair<string, string>("@Category", entity.Category));
             sqlParameters.Add(new KeyValuePair<string, string>("@Place", entity.Place));
             sqlParameters.Add(new KeyValuePair<string, string>("@AchievementStatus", entity.AchievementStatus));
             sqlParameters.Add(new KeyValuePair<string, string>("@filename", entity.filename));
@@ -49,6 +50,7 @@ namespace EducationPortalAPI.Controllers.Forms
         public string StudentId { get; set; }
         public string eventdate { get; set; }
         public string EventDetailS { get; set; }
+        public string Category { get; set; }
         public string Place { get; set; }
         public string AchievementStatus { get; set; }
         public string filename { get; set; }
