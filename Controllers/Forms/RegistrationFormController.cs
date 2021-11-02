@@ -43,7 +43,6 @@ namespace EducationPortalAPI.Controllers.Forms
                 sqlParameters.Add(new KeyValuePair<string, string>("@PermanentAddress", Convert.ToString(registrationForm.PermanentAddress)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@SchoolId", Convert.ToString(registrationForm.SchoolId)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@PhoneNumber", registrationForm.PhoneNumber));
-                sqlParameters.Add(new KeyValuePair<string, string>("@PhoneNumber", registrationForm.PhoneNumber));
                 sqlParameters.Add(new KeyValuePair<string, string>("@AltNumber", registrationForm.AltNumber));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Nameoflastschool", registrationForm.Nameoflastschool));
                 sqlParameters.Add(new KeyValuePair<string, string>("@LastchoolTelephone", Convert.ToString(registrationForm.LastchoolTelephone)));
@@ -60,6 +59,7 @@ namespace EducationPortalAPI.Controllers.Forms
                 sqlParameters.Add(new KeyValuePair<string, string>("@CommunityFilename", registrationForm.CommunityFilename));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Disability", registrationForm.Disability));
                 sqlParameters.Add(new KeyValuePair<string, string>("@AadharNo", registrationForm.AadharNo));
+                sqlParameters.Add(new KeyValuePair<string, string>("@EmailId", registrationForm.EmailId));
 
                 sqlParameters.Add(new KeyValuePair<string, string>("@FatherName", registrationForm.FatherName));
                 sqlParameters.Add(new KeyValuePair<string, string>("@FatherOccupation", registrationForm.FatherOccupation));

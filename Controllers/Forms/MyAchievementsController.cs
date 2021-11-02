@@ -40,7 +40,7 @@ namespace EducationPortalAPI.Controllers.Forms
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", SchoolID));
             ds = manageSQL.GetDataSetValues("GetAchievements", sqlParameters);
-            return JsonConvert.SerializeObject(ds.Tables[0]);
+            return JsonConvert.SerializeObject(ds);
         }
     }
     public class AcssshievementEntity
