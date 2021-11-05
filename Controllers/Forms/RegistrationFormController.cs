@@ -39,14 +39,14 @@ namespace EducationPortalAPI.Controllers.Forms
                 sqlParameters.Add(new KeyValuePair<string, string>("@Medium", registrationForm.Medium));
                 sqlParameters.Add(new KeyValuePair<string, string>("@StudentPhotoFileName", registrationForm.StudentPhotoFileName));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Caste", Convert.ToString(registrationForm.Caste)));
-                sqlParameters.Add(new KeyValuePair<string, string>("@Addressinfo", registrationForm.CurrentAddrress));
+                sqlParameters.Add(new KeyValuePair<string, string>("@Addressinfo", registrationForm.CurrentAddress));
                 sqlParameters.Add(new KeyValuePair<string, string>("@PermanentAddress", Convert.ToString(registrationForm.PermanentAddress)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@SchoolId", Convert.ToString(registrationForm.SchoolId)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@PhoneNumber", registrationForm.PhoneNumber));
                 sqlParameters.Add(new KeyValuePair<string, string>("@AltNumber", registrationForm.AltNumber));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Nameoflastschool", registrationForm.Nameoflastschool));
                 sqlParameters.Add(new KeyValuePair<string, string>("@LastchoolTelephone", Convert.ToString(registrationForm.LastchoolTelephone)));
-                sqlParameters.Add(new KeyValuePair<string, string>("@DistrictId", Convert.ToString(registrationForm.District)));
+                sqlParameters.Add(new KeyValuePair<string, string>("@DistrictId", Convert.ToString(registrationForm.DistrictId)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Postalcode", Convert.ToString(registrationForm.Postalcode)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@RoleId", Convert.ToString(registrationForm.RoleId)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@City", Convert.ToString(registrationForm.Taluk)));
@@ -88,6 +88,7 @@ namespace EducationPortalAPI.Controllers.Forms
                 sqlParameters.Add(new KeyValuePair<string, string>("@GaurdianPhotoFileName", registrationForm.GaurdianPhotoFileName));
 
                 sqlParameters.Add(new KeyValuePair<string, string>("@EncrptedPwd", entryptedPwd));
+                sqlParameters.Add(new KeyValuePair<string, string>("@Flag", "1"));
 
                 var resut = manageSQLConnection.InsertData("InsertRegistration", sqlParameters, "slno");
                 return resut;
@@ -134,7 +135,7 @@ namespace EducationPortalAPI.Controllers.Forms
         public string SectionId { get; set; }
         public string StudentPhotoFileName { get; set; }
         public string Caste { get; set; }
-        public string CurrentAddrress { get; set; }
+        public string CurrentAddress { get; set; }
         public string PermanentAddress { get; set; }
         public int SchoolId { get; set; }
         public string PhoneNumber { get; set; }
@@ -158,7 +159,7 @@ namespace EducationPortalAPI.Controllers.Forms
         public string MotherPhotoFilName { get; set; }
         public string Nameoflastschool { get; set; }
         public string LastchoolTelephone { get; set; }
-        public int District { get; set; }
+        public int DistrictId { get; set; }
         public string Postalcode { get; set; }
         public string LanguageSpoken { get; set; }
         public string GaurdianName { get; set; }
