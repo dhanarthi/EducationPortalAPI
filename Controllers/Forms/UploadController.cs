@@ -49,17 +49,18 @@
                         file.CopyTo(stream);
                         isCopied = true;
                     }
-                    if (isCopied)
-                    {
-                        System.IO.FileInfo fi = new System.IO.FileInfo(fullPath);
-                        if (fi.Exists)
-                        {
-                            sFileName = DateTime.Now.ToString("ddMMyyyyhhmmss");
-                            newFileName = fileName.Replace(fi.Extension, "_") + sFileName + fi.Extension;
-                            var NewfullPath = Path.Combine(pathToSave, newFileName);
-                            fi.MoveTo(NewfullPath);
-                        }
-                    }
+                    newFileName = fileName;
+                    //if (isCopied)
+                    //{
+                    //    System.IO.FileInfo fi = new System.IO.FileInfo(fullPath);
+                    //    if (fi.Exists)
+                    //    {
+                    //        sFileName = DateTime.Now.ToString("ddMMyyyyhhmmss");
+                    //        newFileName = fileName.Replace(fi.Extension, "_") + sFileName + fi.Extension;
+                    //        var NewfullPath = Path.Combine(pathToSave, newFileName);
+                    //        fi.MoveTo(NewfullPath);
+                    //    }
+                    //}
                     return new Tuple<bool, string>(isCopied, newFileName);
                     // return Ok(new { dbPath });
                 }
