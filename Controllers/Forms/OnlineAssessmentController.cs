@@ -98,5 +98,6 @@ namespace EducationPortalAPI.Controllers.Forms
         public Int64 OptionId { get; set; }
         public bool isSelected { get; set; }
         public bool isAnswered { get; set; }
+        public int type { get; set; }
     }
 }
