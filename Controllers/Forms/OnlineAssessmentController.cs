@@ -23,7 +23,7 @@ namespace EducationPortalAPI.Controllers.Forms
         }
 
         [HttpGet("{id}")]
-        public string Get(string SchoolID, string ClassID, string TestDate)
+        public string Get(string SchoolID, string ClassID, string TestDate, string Medium)
         {
             ManageSQLConnection manageSQL = new ManageSQLConnection();
             DataSet ds = new DataSet();
@@ -31,6 +31,7 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@TestDate", TestDate));
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolId", SchoolID));
             sqlParameters.Add(new KeyValuePair<string, string>("@Classcode", ClassID));
+            sqlParameters.Add(new KeyValuePair<string, string>("@Medium", Medium));
             var data = manageSQL.GetDataSetValues("GetOnlineAssessmentQuestion", sqlParameters);
             return JsonConvert.SerializeObject(data.Tables[0]);
         }
@@ -98,6 +99,7 @@ namespace EducationPortalAPI.Controllers.Forms
         public Int64 OptionId { get; set; }
         public bool isSelected { get; set; }
         public bool isAnswered { get; set; }
+        public int StudentId { get; set; }
         public int type { get; set; }
     }
 }

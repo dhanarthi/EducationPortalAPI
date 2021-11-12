@@ -41,6 +41,7 @@ namespace EducationPortalAPI.ManageSQL
                     sqlCommand.Parameters.AddWithValue("@QuestionId", e.QuestionId);
                     sqlCommand.Parameters.AddWithValue("@isAnswered", e.isAnswered);
                     sqlCommand.Parameters.AddWithValue("@isSelected", e.isSelected);
+                    sqlCommand.Parameters.AddWithValue("@StudentId", e.StudentId);
                     sqlCommand.ExecuteNonQuery();
                 }
                 sqlCommand.Parameters.Clear();
