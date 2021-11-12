@@ -83,7 +83,7 @@ namespace EducationPortalAPI.Controllers.Zoom
                     meetting.SchoolId = entity.SchoolId;
                     meetting.MeetingTime = entity.MeetingTime;
                     meetting.SectionCode = entity.SectionCode;
-                    meetting.RowId = 0;
+                    meetting.RowId = entity.RowId;
                     meetting.Flag = true;
                     meetting.StartURL = startURL;
                     ManageZoomSql _manageSQL = new ManageZoomSql();
@@ -117,6 +117,7 @@ namespace EducationPortalAPI.Controllers.Zoom
     }
     public class ZoomEntity
     {
+        public Int64 RowId { get; set; }
         public int ClassId { get; set; }
         public int SectionCode { get; set; }
         public string SchoolId { get; set; }

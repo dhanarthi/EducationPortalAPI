@@ -38,6 +38,24 @@ namespace EducationPortalAPI.Controllers.Forms
             ds = manageSQL.GetDataSetValues("GetEventDetails", sqlParameters);
             return JsonConvert.SerializeObject(ds.Tables[0]);
         }
+        [HttpPut("{id}")]
+        public bool Put(EventDetailsEntity entity)
+        {
+            try
+            {
+                ManageSQLConnection manageSQL = new ManageSQLConnection();
+                List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
+                sqlParameters.Add(new KeyValuePair<string, string>("@RowId", Convert.ToString(entity.RowId)));
+                var result = manageSQL.UpdateValues("DeleteEventDetails", sqlParameters);
+                return result;
+            }
+            catch(Exception ex)
+            {
+                AuditLog.WriteError(ex.Message);
+                return false;
+            }
+
+        }
     }
     public class EventDetailsEntity
     {

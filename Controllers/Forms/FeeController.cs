@@ -32,17 +32,22 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@ReceiptBook", entity.ReceiptBook));
             sqlParameters.Add(new KeyValuePair<string, string>("@FeeName", entity.FeeName));
             sqlParameters.Add(new KeyValuePair<string, string>("@PayMethod", "Offline"));
+            sqlParameters.Add(new KeyValuePair<string, string>("@ClassId", entity.ClassId));
+            sqlParameters.Add(new KeyValuePair<string, string>("@SectionId", entity.SectionId));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
             var result = manageSQL.InsertData("InsertFee", sqlParameters);
             return JsonConvert.SerializeObject(result);
         }
         [HttpGet("{id}")]
-        public string Get(string SchoolID)
+        public string Get(string schoolID, string studentID="0", string yearID="0",int type=0)
         {
             ManageSQLConnection manageSQL = new ManageSQLConnection();
             DataSet ds = new DataSet();
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
-            sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", SchoolID));
+            sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", schoolID));
+            sqlParameters.Add(new KeyValuePair<string, string>("@studentID", studentID));
+            sqlParameters.Add(new KeyValuePair<string, string>("@yearID", yearID));
+            sqlParameters.Add(new KeyValuePair<string, string>("@type", Convert.ToString(type)));
             ds = manageSQL.GetDataSetValues("GetFee", sqlParameters);
             return JsonConvert.SerializeObject(ds.Tables[0]);
         }
@@ -61,6 +66,9 @@ namespace EducationPortalAPI.Controllers.Forms
         public decimal FineAmount { get; set; }
         public string ReceiptBook { get; set; }
         public string FeeName { get; set; }
+
+        public string ClassId { get; set; }
+        public string SectionId { get; set; }
         public bool Flag { get; set; }
     }
 }

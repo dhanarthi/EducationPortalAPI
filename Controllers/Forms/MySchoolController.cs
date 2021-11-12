@@ -30,6 +30,7 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@Landline", entity.Landline));
             sqlParameters.Add(new KeyValuePair<string, string>("@Fax", entity.Fax));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@Filename", entity.Filename));
             var result = manageSQL.InsertData("InsertMySchool", sqlParameters);
             return JsonConvert.SerializeObject(result);
         }
@@ -57,5 +58,6 @@ namespace EducationPortalAPI.Controllers.Forms
        public string Landline       {get;set;}
        public string Fax            {get;set;}
        public bool Flag { get; set; }
+       public string Filename { get; set; }
     }
 }

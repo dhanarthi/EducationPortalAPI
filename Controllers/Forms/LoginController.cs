@@ -22,7 +22,7 @@ namespace EducationPortalAPI.Controllers.Forms
             string RoleName = string.Empty;
             try
             {
-                RoleName = RoleId == 6 ? "Student" : RoleId == 5 ? "Teacher" : "Admin";
+                RoleName = RoleId == 6 ? "Student" : RoleId == 5 ? "Staff" : "Admin";
                 ManageSQLConnection manageSQLConnection = new ManageSQLConnection();
 
                 //Check the document Approval
@@ -50,7 +50,7 @@ namespace EducationPortalAPI.Controllers.Forms
                             }
                             else
                             {
-                                return new Tuple<bool, string, DataTable>(false, "You are authorized to login the " + RoleName, null);
+                                return new Tuple<bool, string, DataTable>(false, "You are not authorized to login as a  " + RoleName, null);
                             }
                         }
                         else

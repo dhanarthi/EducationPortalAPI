@@ -14,9 +14,10 @@ namespace EducationPortalAPI.ManageSQL
         SqlCommand sqlCommand = new SqlCommand();
 
         SqlDataAdapter dataAdapter;
- 
+
         public bool InsertData(OnlineAssessmentMasterEntity entity)
         {
+            bool QuestionInserted = false;
             SqlTransaction objTrans = null;
             sqlConnection = new SqlConnection(GlobalVariable.ConnectionString);
             DataSet ds = new DataSet();
@@ -70,10 +71,11 @@ namespace EducationPortalAPI.ManageSQL
                     sqlCommand.Parameters.Add("@QuestionId", SqlDbType.BigInt, 13);
                     sqlCommand.Parameters["@QuestionId"].Direction = ParameterDirection.Output;
                     sqlCommand.ExecuteNonQuery();
-                    int QuestionId= (int)(long)sqlCommand.Parameters["@QuestionId"].Value;
+                    int QuestionId = (int)(long)sqlCommand.Parameters["@QuestionId"].Value;
 
                     foreach (var Option in item.options)
                     {
+                        QuestionInserted = false;
                         sqlCommand.Parameters.Clear();
                         sqlCommand.Dispose();
 
@@ -85,14 +87,24 @@ namespace EducationPortalAPI.ManageSQL
                         sqlCommand.Parameters.AddWithValue("@OptionId", Option.optionId);
                         sqlCommand.Parameters.AddWithValue("@QuestionId", QuestionId);
                         sqlCommand.Parameters.AddWithValue("@OptionName", Option.optionName);
-                        sqlCommand.Parameters.AddWithValue("@IsAnswer", Option.isAnswer);  
+                        sqlCommand.Parameters.AddWithValue("@IsAnswer", Option.isAnswer);
                         sqlCommand.ExecuteNonQuery();
+                        QuestionInserted = true;
                     }
                 }
                 sqlCommand.Parameters.Clear();
                 sqlCommand.Dispose();
-                objTrans.Commit();
-                return true;
+                if (QuestionInserted)
+                {
+                    objTrans.Commit();
+                    return true;
+                }
+                else
+                {
+                    objTrans.Rollback();
+                    return false;
+                }
+               
 
             }
             catch (Exception ex)
