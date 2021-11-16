@@ -75,6 +75,7 @@ namespace EducationPortalAPI.Controllers.Forms
         public bool Flag { get; set; }
         public int Medium { get; set; }
         public string AssessmentTime { get; set; }
+        public Int64 CreatedBy { get; set; }
         public List<OnlineAssessmentQuestionsEntity> Questions { get; set; }
     }
     public class OnlineAssessmentQuestionsEntity

@@ -27,10 +27,10 @@ namespace EducationPortalAPI.Controllers.Forms
             DataSet ds = new DataSet();
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
             sqlParameters.Add(new KeyValuePair<string, string>("@RowId", TestId));
-            sqlParameters.Add(new KeyValuePair<string, string>("@RowId", TestId));
-            sqlParameters.Add(new KeyValuePair<string, string>("@RowId", TestId));
-            sqlParameters.Add(new KeyValuePair<string, string>("@RowId", TestId));
-            var data = manageSQL.GetDataSetValues("CheckOnlineAssessment", sqlParameters);
+            sqlParameters.Add(new KeyValuePair<string, string>("@SchooldId", TestId));
+            sqlParameters.Add(new KeyValuePair<string, string>("@TestDate", TestId));
+            sqlParameters.Add(new KeyValuePair<string, string>("@StudentId", TestId));
+            var data = manageSQL.GetDataSetValues("", sqlParameters);
             return JsonConvert.SerializeObject(data.Tables[0]);
         }
     }
