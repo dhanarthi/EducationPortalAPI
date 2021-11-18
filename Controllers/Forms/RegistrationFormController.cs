@@ -176,7 +176,6 @@ namespace EducationPortalAPI.Controllers.Forms
         public string LastchoolTelephone { get; set; }
         public int DistrictId { get; set; }
         public string Postalcode { get; set; }
-        public string LanguageSpoken { get; set; }
         public string GaurdianName { get; set; }
         public string GaurdianOccupation { get; set; }
         public string GaurdianDesignation { get; set; }
