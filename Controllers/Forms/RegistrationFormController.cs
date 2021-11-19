@@ -139,8 +139,8 @@ namespace EducationPortalAPI.Controllers.Forms
         public string ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime DateofBirth { get; set; }
-        public DateTime DateofJoining { get; set; }
+        public string DateofBirth { get; set; }
+        public string DateofJoining { get; set; }
         public string Gender { get; set; }
         public string Medium { get; set; }
         public string Nationality { get; set; }
