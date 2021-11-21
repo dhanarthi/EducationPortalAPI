@@ -35,8 +35,8 @@ namespace EducationPortalAPI.Controllers.Forms
             DataSet ds = new DataSet();
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", SchoolID));
-            sqlParameters.Add(new KeyValuePair<string, string>("@Month", SchoolID));
-            sqlParameters.Add(new KeyValuePair<string, string>("@ShortYear", SchoolID));
+            sqlParameters.Add(new KeyValuePair<string, string>("@Month", Convert.ToString(Month)));
+            sqlParameters.Add(new KeyValuePair<string, string>("@ShortYear",Convert.ToString(ShortYear)));
             ds = manageSQL.GetDataSetValues("GetNewsLetter", sqlParameters);
             return JsonConvert.SerializeObject(ds.Tables[0]);
         }
