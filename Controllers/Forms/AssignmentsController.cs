@@ -26,21 +26,23 @@ namespace EducationPortalAPI.Controllers.Forms
             sqlParameters.Add(new KeyValuePair<string, string>("@AssignmentDueDate", entity.AssignmentDueDate));
             sqlParameters.Add(new KeyValuePair<string, string>("@AssignmentWork", entity.AssignmentWork));
             sqlParameters.Add(new KeyValuePair<string, string>("@AssignmentType", entity.AssignmentType));
-            sqlParameters.Add(new KeyValuePair<string, string>("@Subjectname", entity.Subjectname));
+            sqlParameters.Add(new KeyValuePair<string, string>("@SubjectId", entity.SubjectId));
             sqlParameters.Add(new KeyValuePair<string, string>("@Assignmentfilename", entity.Assignmentfilename));
             sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
             sqlParameters.Add(new KeyValuePair<string, string>("@SectionId", entity.SectionId));
+            sqlParameters.Add(new KeyValuePair<string, string>("@AssignedBy", entity.AssignedBy));
             var result = manageSQL.InsertData("InsertAssignments", sqlParameters);
             return JsonConvert.SerializeObject(result);
         }
         [HttpGet("{id}")]
-        public string Get(string SchoolID, string Class)
+        public string Get(string SchoolID, string ClassId, string AssignedBy)
         {
             ManageSQLConnection manageSQL = new ManageSQLConnection();
             DataSet ds = new DataSet();
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", SchoolID));
-            sqlParameters.Add(new KeyValuePair<string, string>("@Class", Class));
+            sqlParameters.Add(new KeyValuePair<string, string>("@ClassId", ClassId));
+            sqlParameters.Add(new KeyValuePair<string, string>("@AssignedBy", AssignedBy));
             ds = manageSQL.GetDataSetValues("GetAssignments", sqlParameters);
             return JsonConvert.SerializeObject(ds.Tables[0]);
         }
@@ -54,9 +56,10 @@ namespace EducationPortalAPI.Controllers.Forms
         public string AssignmentDueDate { get; set; }
         public string AssignmentWork { get; set; }
         public string AssignmentType { get; set; }
-        public string Subjectname { get; set; }
+        public string SubjectId { get; set; }
         public string Assignmentfilename { get; set; }
         public string SectionId { get; set; }
+        public string AssignedBy { get; set; }
         public bool Flag { get; set; }
     }
 }
