@@ -183,14 +183,16 @@ namespace EducationPortalAPI.ManageSQL
                 {
                     sqlCommand.Parameters.AddWithValue(keyValuePair.Key, keyValuePair.Value);
                 }
-             
-                sqlCommand.Parameters.Add(sFieldName, SqlDbType.Int);
-                sqlCommand.Parameters[sFieldName].Direction = ParameterDirection.Output;
+
+                //sqlCommand.Parameters.Add(sFieldName, SqlDbType.BigInt);
+                //sqlCommand.Parameters[sFieldName].Direction = ParameterDirection.Output;
                 sqlCommand.ExecuteNonQuery();
-
-                int @slno = (int)sqlCommand.Parameters[sFieldName].Value;
-
-                return new Tuple<bool,int, string>(true, @slno, "Save Successfully");
+                int slno = 0;
+                //if (!string.IsNullOrEmpty(Convert.ToString(sqlCommand.Parameters[sFieldName].Value)))
+                //{
+                //    slno = (int)sqlCommand.Parameters[sFieldName].Value;
+                //}
+                return new Tuple<bool,int, string>(true, slno, "Save Successfully");
             }
             catch (Exception ex)
             {

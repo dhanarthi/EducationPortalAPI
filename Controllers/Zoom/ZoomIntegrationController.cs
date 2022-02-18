@@ -86,6 +86,7 @@ namespace EducationPortalAPI.Controllers.Zoom
                     meetting.RowId = entity.RowId;
                     meetting.Flag = true;
                     meetting.StartURL = startURL;
+                    meetting.CreatedBy = entity.CreatedBy;
                     ManageZoomSql _manageSQL = new ManageZoomSql();
                     _manageSQL.InsertData(meetting);
 
@@ -107,11 +108,21 @@ namespace EducationPortalAPI.Controllers.Zoom
             ManageSQLConnection manageSQL = new ManageSQLConnection();
             DataSet ds = new DataSet();
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
+            var procedure = string.Empty;
             sqlParameters.Add(new KeyValuePair<string, string>("@Date", Date));
-            sqlParameters.Add(new KeyValuePair<string, string>("@SectionCode", SectionCode));
-            sqlParameters.Add(new KeyValuePair<string, string>("@ClassId", ClassId));
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolId", SchoolId));
-            var data = manageSQL.GetDataSetValues("GetMeetingInfo", sqlParameters);
+            if (ClassId == "0")
+            {
+                sqlParameters.Add(new KeyValuePair<string, string>("@CreatedBy", SectionCode));
+                procedure = "GetMeetingInfoCreatedBy";
+
+            } else
+            {
+                sqlParameters.Add(new KeyValuePair<string, string>("@SectionCode", SectionCode));
+                sqlParameters.Add(new KeyValuePair<string, string>("@ClassId", ClassId));
+                procedure = "GetMeetingInfo";
+            }
+            var data = manageSQL.GetDataSetValues(procedure, sqlParameters);
             return JsonConvert.SerializeObject(data.Tables[0]);
         }
     }
@@ -125,6 +136,7 @@ namespace EducationPortalAPI.Controllers.Zoom
         public string MeetingTime { get; set; }
         public int Duration { get; set; }
         public string Topics { get; set; }
+        public string CreatedBy { get; set; }
     }
 
     public class MeettingEntity
@@ -144,5 +156,6 @@ namespace EducationPortalAPI.Controllers.Zoom
         public bool Flag { get; set; }
         public string HostEmail { get; set; }
         public string StartURL { get; set; }
+        public string CreatedBy { get; set; }
     }
 }

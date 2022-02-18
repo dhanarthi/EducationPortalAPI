@@ -139,8 +139,8 @@ namespace EducationPortalAPI.Controllers.Forms
         public string ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime DateofBirth { get; set; }
-        public DateTime DateofJoining { get; set; }
+        public string DateofBirth { get; set; }
+        public string DateofJoining { get; set; }
         public string Gender { get; set; }
         public string Medium { get; set; }
         public string Nationality { get; set; }
@@ -176,7 +176,6 @@ namespace EducationPortalAPI.Controllers.Forms
         public string LastchoolTelephone { get; set; }
         public int DistrictId { get; set; }
         public string Postalcode { get; set; }
-        public string LanguageSpoken { get; set; }
         public string GaurdianName { get; set; }
         public string GaurdianOccupation { get; set; }
         public string GaurdianDesignation { get; set; }

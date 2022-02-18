@@ -28,7 +28,8 @@ namespace EducationPortalAPI.ManageSQL
                 sqlParameters.Add(new KeyValuePair<string, string>("@SectionCode", Convert.ToString(entity.SectionCode)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@HostEmail", Convert.ToString(entity.HostEmail)));
-                sqlParameters.Add(new KeyValuePair<string, string>("@StartURL", entity.StartURL)); 
+                sqlParameters.Add(new KeyValuePair<string, string>("@StartURL", entity.StartURL));
+                sqlParameters.Add(new KeyValuePair<string, string>("@CreatedBy", entity.CreatedBy)); 
                 var result = manageSQL.InsertData("InsertMeetingInfo", sqlParameters);
                 return true;
             }

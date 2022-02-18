@@ -41,7 +41,7 @@ namespace EducationPortalAPI.Controllers.Forms
         }
 
         [HttpGet("{id}")]
-        public string Get(string SchoolID, int QuestionYear, int Classcode)
+        public string Get(string SchoolID, int QuestionYear, int Classcode, int Medium)
         {
             try
             {
@@ -50,6 +50,7 @@ namespace EducationPortalAPI.Controllers.Forms
                 sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", SchoolID));
                 sqlParameters.Add(new KeyValuePair<string, string>("@QuestionYear", Convert.ToString(QuestionYear)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Classcode", Convert.ToString(Classcode)));
+                sqlParameters.Add(new KeyValuePair<string, string>("@Medium", Convert.ToString(Medium)));
                 var result = manageSQL.GetDataSetValues("GetQuestionBank", sqlParameters);
                 return JsonConvert.SerializeObject(result.Tables[0]);
             }

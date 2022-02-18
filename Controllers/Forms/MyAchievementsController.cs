@@ -33,12 +33,13 @@ namespace EducationPortalAPI.Controllers.Forms
             return JsonConvert.SerializeObject(result);
         }
         [HttpGet("{id}")]
-        public string Get(string SchoolID)
+        public string Get(string SchoolID, string StudentId)
         {
             ManageSQLConnection manageSQL = new ManageSQLConnection();
             DataSet ds = new DataSet();
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
             sqlParameters.Add(new KeyValuePair<string, string>("@SchoolID", SchoolID));
+            sqlParameters.Add(new KeyValuePair<string, string>("@StudentId", StudentId));
             ds = manageSQL.GetDataSetValues("GetAchievements", sqlParameters);
             return JsonConvert.SerializeObject(ds);
         }
