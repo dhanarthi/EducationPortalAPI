@@ -139,6 +139,8 @@ namespace EducationPortalAPI.ManageSQL
                 {
                     sqlCommand.Parameters.AddWithValue(keyValuePair.Key, keyValuePair.Value);
                 }
+               // sqlCommand.CommandTimeout = 360;
+               // System.Threading.Thread.Sleep(300);  
                 sqlCommand.ExecuteNonQuery();
                 return true;
 
@@ -186,6 +188,7 @@ namespace EducationPortalAPI.ManageSQL
 
                 //sqlCommand.Parameters.Add(sFieldName, SqlDbType.BigInt);
                 //sqlCommand.Parameters[sFieldName].Direction = ParameterDirection.Output;
+                sqlCommand.CommandTimeout = 360;
                 sqlCommand.ExecuteNonQuery();
                 int slno = 0;
                 //if (!string.IsNullOrEmpty(Convert.ToString(sqlCommand.Parameters[sFieldName].Value)))

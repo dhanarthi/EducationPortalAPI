@@ -36,13 +36,35 @@ namespace EducationPortalAPI
             }
 
             app.UseCors(options =>
-          options.WithOrigins("http://localhost:4200", "http://180.179.49.72:8088", "https://180.179.49.72", "https://tncsc-scm.in/EducationPortal", "https://edu.tessolve.com")
+          options.WithOrigins("http://localhost:4200", "http://localhost", "http://180.179.49.72:8088", "https://180.179.49.72", "https://tncsc-scm.in/EducationPortal", "https://edu.tessolve.com", "/index.html", "/Menumaster", "/login", "/Registration")
           .AllowAnyMethod()
           .AllowAnyHeader()
           .AllowCredentials()
+          .SetIsOriginAllowed((host) => true)
           );
             app.UseHttpsRedirection();
             app.UseMvc();
+
+
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+        //    app.UseCors(options =>
+        //options.WithOrigins("http://localhost:4200", "http://localhost", "https://adatwd.tessolve.com", "http://tnadw-hms.in", "https://tnadw-hms.in", "/index.html", "/Menumaster", "/login", "/Registration")
+        //.AllowAnyMethod()
+        //.AllowAnyHeader()
+        //.AllowCredentials()
+        //.SetIsOriginAllowed((host) => true)
+        //);
+        //    //app.UseEndpoints(endpoints =>
+        //    //{
+        //    //    endpoints.MapControllers();
+        //    //    endpoints.MapFallbackToFile("/index.html");
+        //    //});
+        //    app.UseHttpsRedirection();
+        //    app.UseMvc();
         }
     }
 }

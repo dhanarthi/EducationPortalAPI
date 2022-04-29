@@ -28,15 +28,15 @@ namespace EducationPortalAPI.Controllers.Zoom
                 // declare the variables
                 var tokenHandler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
                 var now = DateTime.Now;
-                var apiSecret = "0yIoVcQKeQX0tG9hZt0qRo9rKXx2sqLeTWjW";
+                var apiSecret = "iMWbObgu1tk1J1NI2f8sYg6X9VMHt1o68KVe";
                 byte[] symmetricKey = Encoding.ASCII.GetBytes(apiSecret);
 
 
-                ///change it to Token String for the Authorization Header
+                ///change it to Token String for the Authorization Header ow.AddSeconds(6000)
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Issuer = "lJXDJ2_mTtWmDHEMAtpW0A",
-                    Expires = now.AddSeconds(6000),
+                    Expires = now.AddDays(2),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(symmetricKey), SecurityAlgorithms.HmacSha256),
                 };
                 var token = tokenHandler.CreateToken(tokenDescriptor);
@@ -57,9 +57,8 @@ namespace EducationPortalAPI.Controllers.Zoom
                 var client = new RestClient("https://api.zoom.us/v2/users/dulasimca@gmail.com/meetings");
                 var request = new RestRequest(Method.POST);
                 request.RequestFormat = DataFormat.Json;
-                request.AddJsonBody(new { topic = entity.Topics, duration = entity.Duration, start_time = entity.MeetingDate, type = "2" });
+                request.AddJsonBody(new { topic = entity.TopicsName + ' ' + entity.ClassName, duration = entity.Duration, start_time = entity.MeetingDate, type = "2" });
                 request.AddHeader("authorization", String.Format("Bearer {0}", tokenString));
-
 
                 IRestResponse restResponse = client.Execute(request);
                 HttpStatusCode statusCode = restResponse.StatusCode;
@@ -68,16 +67,17 @@ namespace EducationPortalAPI.Controllers.Zoom
                 string startURL = (string)MyjObject["start_url"];
                 string JoinURL = (string)MyjObject["join_url"];
                 string SuccessCode = Convert.ToString(numericStatusCode);
-
+              //  AuditLog.WriteError(numericStatusCode.ToString());
                 if (numericStatusCode == 201)
                 {
+                    AuditLog.WriteError("Meeting Created ");
                     MeettingEntity meetting = new MeettingEntity();
                     meetting.MeetingId = (string)MyjObject["id"];
                     meetting.MeetingURL = (string)MyjObject["join_url"]; ;
                     meetting.Passcode = (string)MyjObject["password"]; ;
-                    meetting.Topics = (string)MyjObject["topic"]; ;
+                    meetting.Topics = entity.Topics ;
                     meetting.Duration = (int)MyjObject["duration"]; ;
-                    meetting.MeetingDate = (DateTime)MyjObject["start_time"];
+                    meetting.MeetingDate = entity.MeetingDate.ToString("MM/dd/yyyy");
                     meetting.HostEmail = (string)MyjObject["host_email"];
                     meetting.ClassId = entity.ClassId;
                     meetting.SchoolId = entity.SchoolId;
@@ -88,6 +88,7 @@ namespace EducationPortalAPI.Controllers.Zoom
                     meetting.StartURL = startURL;
                     meetting.CreatedBy = entity.CreatedBy;
                     ManageZoomSql _manageSQL = new ManageZoomSql();
+                   // AuditLog.WriteError(JsonConvert.SerializeObject(meetting));
                     _manageSQL.InsertData(meetting);
 
                 }
@@ -97,6 +98,7 @@ namespace EducationPortalAPI.Controllers.Zoom
             }
             catch (Exception ex)
             {
+                AuditLog.WriteError(ex.Message);
                 throw ex;
             }
 
@@ -137,6 +139,9 @@ namespace EducationPortalAPI.Controllers.Zoom
         public int Duration { get; set; }
         public string Topics { get; set; }
         public string CreatedBy { get; set; }
+        public string TopicsName { get; set; }
+
+        public string ClassName { get; set; }
     }
 
     public class MeettingEntity
@@ -145,7 +150,7 @@ namespace EducationPortalAPI.Controllers.Zoom
         public int ClassId { get; set; }
         public int SectionCode { get; set; }
         public string SchoolId { get; set; }
-        public DateTime MeetingDate { get; set; }
+        public string MeetingDate { get; set; }
         public string MeetingTime { get; set; }
         public int Duration { get; set; }
         public string MeetingId { get; set; }
