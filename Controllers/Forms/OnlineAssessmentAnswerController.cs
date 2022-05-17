@@ -11,7 +11,9 @@ using Newtonsoft.Json;
 
 namespace EducationPortalAPI.Controllers.Forms
 {
-    public class OnlineAssessmentAnswerController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class OnlineAssessmentAnswerController : ControllerBase
     {
         [HttpPost("{id}")]
         public string Post([FromBody]List<OnlineAssessmentAnswers> entity)
@@ -26,7 +28,7 @@ namespace EducationPortalAPI.Controllers.Forms
             ManageSQLConnection manageSQL = new ManageSQLConnection();
             DataSet ds = new DataSet();
             List<KeyValuePair<string, string>> sqlParameters = new List<KeyValuePair<string, string>>();
-            sqlParameters.Add(new KeyValuePair<string, string>("@RowId", TestID));
+            sqlParameters.Add(new KeyValuePair<string, string>("@RowId",  string.IsNullOrEmpty(TestID) ? "0" : TestID));
             var data = manageSQL.GetDataSetValues("CheckOnlineAssessment", sqlParameters);
             return JsonConvert.SerializeObject(data.Tables[0]);
         }

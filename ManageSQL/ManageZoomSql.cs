@@ -1,4 +1,5 @@
 ﻿using EducationPortalAPI.Controllers.Zoom;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -28,9 +29,11 @@ namespace EducationPortalAPI.ManageSQL
                 sqlParameters.Add(new KeyValuePair<string, string>("@SectionCode", Convert.ToString(entity.SectionCode)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@Flag", Convert.ToString(entity.Flag)));
                 sqlParameters.Add(new KeyValuePair<string, string>("@HostEmail", Convert.ToString(entity.HostEmail)));
-                sqlParameters.Add(new KeyValuePair<string, string>("@StartURL", entity.StartURL));
-                sqlParameters.Add(new KeyValuePair<string, string>("@CreatedBy", entity.CreatedBy)); 
+                sqlParameters.Add(new KeyValuePair<string, string>("@StartURL", "")); //entity.StartURL
+                sqlParameters.Add(new KeyValuePair<string, string>("@CreatedBy", entity.CreatedBy));
+               AuditLog.WriteError(entity.MeetingId  + " : " + entity.StartURL);
                 var result = manageSQL.InsertData("InsertMeetingInfo", sqlParameters);
+              //  AuditLog.WriteError(result.ToString());
                 return true;
             }
             catch (Exception ex)
