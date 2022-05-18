@@ -22,7 +22,7 @@ namespace EducationPortalAPI.Controllers.Forms
             string RoleName = string.Empty;
             try
             {
-                RoleName = RoleId == 6 ? "Student" : RoleId == 5 ? "Staff" : "Admin";
+                RoleName = RoleId == 6 ? "Student" : RoleId == 5 ?  "Staff" : "Admin";
                 ManageSQLConnection manageSQLConnection = new ManageSQLConnection();
 
                 //Check the document Approval
@@ -36,6 +36,10 @@ namespace EducationPortalAPI.Controllers.Forms
                     {
                         if(data.Tables[0].Rows.Count>0)
                         {
+                            if (Convert.ToInt32(data.Tables[0].Rows[0]["RoleId"]) == 1 || Convert.ToInt32(data.Tables[0].Rows[0]["RoleId"]) == 2) /// HO admin and Super Admin 
+                            {
+                                RoleId = Convert.ToInt32(data.Tables[0].Rows[0]["RoleId"]);
+                            }
                             if(Convert.ToInt32(data.Tables[0].Rows[0]["RoleId"])  == RoleId)
                             {
                                 if(Convert.ToString(data.Tables[0].Rows[0]["EncrptedPwd"]) == security.Encryptword(Password))
