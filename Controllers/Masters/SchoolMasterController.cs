@@ -31,7 +31,7 @@ namespace EducationPortalAPI.Controllers.Masters
             return JsonConvert.SerializeObject(result);
         }
         [HttpGet("{id}")]
-        public string Get(string Districcode, string Talukcode, string Catagorycode, string Schoolcode)
+        public string Get(string Districcode, string Talukcode)
         {
             ManageSQLConnection manageSQL = new ManageSQLConnection();
             DataSet ds = new DataSet();
