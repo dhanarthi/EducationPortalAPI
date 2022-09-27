@@ -21,14 +21,14 @@ pipeline {
         }
         stage("Release Stage") {
             steps {
-                bat 'dotnet build %WORKSPACE%\\EducationPortalAPI.csproj /p:PublishProfile=" %WORKSPACE%\\EducationPortalAPI\\Properties\\PublishProfiles\\FolderProfile.pubxml" /p:Platform="Any CPU" /p:DeployOnBuild=true /m'
+                bat 'dotnet build %WORKSPACE%\\EducationPortalAPI.csproj /p:PublishProfile=" %WORKSPACE%\\Properties\\PublishProfiles\\FolderProfile.pubxml" /p:Platform="Any CPU" /p:DeployOnBuild=true /m'
             }
         }
         stage('Deploy Stage') {
             steps {
                 //Deploy application on IIS
                 bat 'net stop "w3svc"'
-                bat '"C:\\Program Files (x86)\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb:sync -source:package="%WORKSPACE%\\bin\\Debug\\netcoreapp2.1\\EducationPortalAPI.zip" -dest:auto -setParam:"IIS Web Application Name"="Demo.Web" -skip:objectName=filePath,absolutePath=".\\\\PackagDemoeTmp\\\\web.config$" -enableRule:DoNotDelete -allowUntrusted=true'
+                bat '"C:\\Program Files (x86)\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb:sync -source:package="%WORKSPACE%\\bin\\Debug\\netcoreapp2.1\\EducationPortalAPI.zip" -dest:auto -setParam:"IIS Web Application Name"="Demo.Web" -skip:objectName=filePath,absolutePath=".%WORKSPACE%\obj\Release\netcoreapp2.1\PubTmp\Out\web.config" -enableRule:DoNotDelete -allowUntrusted=true'
                 bat 'net start "w3svc"'
             }
         }
