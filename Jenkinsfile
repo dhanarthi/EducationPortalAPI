@@ -28,7 +28,7 @@ pipeline {
             steps {
                 //Deploy application on IIS
                 bat 'net stop "w3svc"'
-                bat '"C:\\Program Files (x86)\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb:sync -source:iisApp="$%WORKSPACE%\\bin\\Debug\\netcoreapp2.1\\PRACTICE.zip" -enableRule:AppOffline -dest:iisApp="$Demo.Web",ComputerName="https://$localhost:100/msdeploy.axd"'
+                bat '"C:\\Program Files (x86)\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb:sync -source:iisApp="$%WORKSPACE%\\bin\\Debug\\netcoreapp2.1\\PRACTICE.zip" -enableRule:AppOffline -dest:iisApp="$Demo.Web",ComputerName="http://$localhost:100"'
                 bat 'net start "w3svc"'
             }
         }
