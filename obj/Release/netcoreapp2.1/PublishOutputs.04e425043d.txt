@@ -1,0 +1,8 @@
+D:\Jenkins\EducationPortalAPI\obj\Release\netcoreapp2.1\PubTmp\Out\appsettings.Development.json
+D:\Jenkins\EducationPortalAPI\obj\Release\netcoreapp2.1\PubTmp\Out\appsettings.json
+D:\Jenkins\EducationPortalAPI\obj\Release\netcoreapp2.1\PubTmp\Out\EducationPortalAPI.dll
+D:\Jenkins\EducationPortalAPI\obj\Release\netcoreapp2.1\PubTmp\Out\EducationPortalAPI.runtimeconfig.json
+D:\Jenkins\EducationPortalAPI\obj\Release\netcoreapp2.1\PubTmp\Out\EducationPortalAPI.pdb
+D:\Jenkins\EducationPortalAPI\obj\Release\netcoreapp2.1\PubTmp\Out\Newtonsoft.Json.dll
+D:\Jenkins\EducationPortalAPI\obj\Release\netcoreapp2.1\PubTmp\Out\RestSharp.dll
+D:\Jenkins\EducationPortalAPI\obj\Release\netcoreapp2.1\PubTmp\Out\EducationPortalAPI.deps.json
