@@ -28,7 +28,7 @@ pipeline {
             steps {
                 //Deploy application on IIS
                 bat 'net stop "w3svc"'
-                bat '"C:\\Program Files (x86)\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb:sync -source:package="%WORKSPACE%\\Mypipeline\\bin\\Debug\\netcoreapp2.1\\EducationPortalAPI.zip" -dest:auto -setParam:"IIS Web Application Name"="Demo.Web" -skip:objectName=filePath,absolutePath=".\\\\PackagDemoeTmp\\\\web.config$" -enableRule:DoNotDelete -allowUntrusted=true'
+                bat '"C:\\Program Files (x86)\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb:sync -source:package="%WORKSPACE%\\bin\\Debug\\netcoreapp2.1\\EducationPortalAPI.zip" -dest:auto -setParam:"IIS Web Application Name"="Demo.Web" -skip:objectName=filePath,absolutePath=".\\\\PackagDemoeTmp\\\\web.config$" -enableRule:DoNotDelete -allowUntrusted=true'
                 bat 'net start "w3svc"'
             }
         }
